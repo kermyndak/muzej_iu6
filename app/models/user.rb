@@ -23,4 +23,26 @@ class User < ApplicationRecord
       message: "Минимальная длина пароля 8 символов"
     }
   }
+
+  validates :name, {
+    presence: {
+      message: "Имя должна присутствовать"
+    }
+  }
+
+  validates :surname, {
+    presence: {
+      message: "Фамилия должна присутствовать"
+    }
+  }
+
+  validates :role, {
+    presence: {
+      message: "Role can't be empty"
+    },
+    format: {
+      with: /\A(admin|user)\z/,
+      message: "Incorrect role"
+    }
+  }
 end
