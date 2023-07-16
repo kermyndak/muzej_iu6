@@ -1,2 +1,6 @@
-<%= link_to 'login', 'users/sign_in' %>
-<%= link_to 'signup', 'users/sign_up' %>
+<% if user_signed_in? %>
+    <%= button_to('Sign out', 'users/sign_out', :method => :delete) %>
+<% else %>
+    <%= link_to 'login', 'users/sign_in' %>
+    <%= link_to 'signup', 'users/sign_up' %>
+<% end %>
