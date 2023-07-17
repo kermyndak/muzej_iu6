@@ -36,6 +36,17 @@ class User < ApplicationRecord
     }
   }
 
+  validates :year, {
+    presence: {
+      message: "Год выпуска должен присутствовать"
+    },
+    numericality: {
+      greater_than: 1952,
+      less_than_or_equal_to: Time.now.year,
+      message: "Такой год невозможен"
+    }
+  }
+
   validates :role, {
     presence: {
       message: "Role can't be empty"
