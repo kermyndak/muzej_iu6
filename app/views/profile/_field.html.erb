@@ -1,0 +1,29 @@
+<%= turbo_frame_tag 'name' do %>
+    <%= form_with url: "/profile/update/name/#{@user_id}", method: :put do |form| %>
+        <div class="name">
+            <%= form.label :name, "Name:" %>
+            <%= form.text_field :name, placeholder: "Enter name" %>
+        </div>
+        <%= form.submit "Сохранить" %>
+    <% end %>
+<% end %>
+
+<%= turbo_frame_tag 'surname' do %>
+    <%= form_with url: "/profile/update/surname/#{@user_id}", method: :put do |form| %>
+        <div class="surname">
+            <%= form.label :surname, "Surname:" %>
+            <%= form.text_field :surname, placeholder: "Enter surname" %>
+        </div>
+        <%= form.submit "Сохранить" %>
+    <% end %>
+<% end %>
+
+<%= turbo_frame_tag 'middle_name' do %>
+    <%= form_with url: "/profile/update/middle_name/#{@user_id}", method: :put do |form| %>
+        <div class="middle_name">
+            <%= form.label :middle_name, "Middle_name:" %>
+            <%= form.text_field :middle_name, placeholder: "Enter middle_name" %>
+        </div>
+        <%= form.submit "Сохранить" %>
+    <% end %>
+<% end %>

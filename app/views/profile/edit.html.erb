@@ -1,0 +1,20 @@
+<h1>Edit user</h1>
+<div class="name">
+    <p>Имя: <%= @user.name %></p>
+    <%= turbo_frame_tag 'name' do %>
+        <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
+    <% end %>
+</div>
+<div class="surname">
+    <p>Фамилия: <%= @user.surname %></p>
+    <%= turbo_frame_tag 'surname' do %>
+        <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
+    <% end %>
+</div>
+<div class="middle_name">
+    <p>Отчество: <%= @user.middle_name %></p>
+    <%= turbo_frame_tag 'middle_name' do %>
+        <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
+    <% end %>
+</div>
+<%= button_to 'Back', '/profile/admin_profile', method: :get, class: "btn btn-primary btn-sign-out" %>

@@ -1,0 +1,27 @@
+<h1>Users</h1>
+<% @users.each do |user| %>
+    <div class="card">
+      <div class="card-body">
+        <h3 class="card-title">Email: <%= user.email %></h3>
+        <p>Имя: <%= user.name %></p>
+        <p>Фамилия: <%= user.surname %></p>
+        <% unless user.middle_name.empty? %>
+          <p>Отчество: <%= user.middle_name %></p>
+        <% end %>
+        <p>Дата создания: <%= user.created_at %></p>
+        <p>Дата обновления: <%= user.updated_at %></p>
+        <p id="role">Роль: <%= user.role %></p>
+        <%= turbo_frame_tag 'set_admin' do %>
+          <% if user.role == 'user' %>
+            <a href="/profile/set_admin/<%= user.id %>" class="btn btn-primary">Назначить администратором</a>  
+          <% else %>
+            <a href="/profile/set_admin/<%= user.id %>" class="btn btn-danger">Сделать обычным пользователем</a>
+          <% end %>
+        <% end %>
+            <a href="/profile/edit/<%= user.id %>" class="btn btn-danger">Изменить данные пользователя</a>
+            <br>
+            <a href="/profile/destroy?user=<%= user.id %>" class="btn btn-danger">Удалить пользователя</a>
+      </div>
+    </div>
+    <br>
+<% end %>

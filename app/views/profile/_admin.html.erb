@@ -1,0 +1,7 @@
+<%= turbo_frame_tag 'set_admin' do %>
+  <% if @user.role == 'user' %>
+    <a href="/profile/set_admin/<%= @user_id %>" class="btn btn-primary">Назначить администратором</a>  
+  <% else %>
+    <a href="/profile/set_admin/<%= @user_id %>" class="btn btn-danger">Сделать обычным пользователем</a>
+  <% end %>
+<% end %>
