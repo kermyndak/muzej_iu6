@@ -29,7 +29,21 @@ class ProfileController < ApplicationController
 
   # Update user
   def update
-
+    parameters = get_update_params
+    case parameters[:field]
+    when 'name'
+      @user.update_column(:name, parameters[:name])
+      render partial: 'name_link'
+    when 'surname'
+      @user.update_column(:surname, parameters[:surname])
+      render partial: 'surname_link'
+    when 'middle_name'
+      @user.update_column(:middle_name, parameters[:middle_name])
+      render partial: 'middle_name_link'
+    when 'year'
+      @user.update_column(:year, parameters[:year])
+      render partial: 'year_link'
+    end
   end
 
   def change_role
@@ -44,6 +58,11 @@ class ProfileController < ApplicationController
 
   def get_edit_params
     params.permit(:name, :surname, :middle_name, :year)
+  end
+
+  def get_update_params
+    @user = User.find(@user_id)
+    params.permit(:field, :name, :surname, :middle_name, :year)
   end
 
   def get_user_id

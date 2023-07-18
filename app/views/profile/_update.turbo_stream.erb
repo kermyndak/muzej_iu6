@@ -1,0 +1,3 @@
+<%= turbo_stream.update 'current_name' do %>
+    <%= User.find(@user_id).name %>
+<% end %>

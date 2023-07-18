@@ -1,0 +1,6 @@
+<%= turbo_stream.update 'middle_name' do %>
+    <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
+<% end %>
+<%= turbo_stream.update 'current_middle_name' do %>
+    <%= User.find(@user_id).middle_name %>
+<% end %>

@@ -1,19 +1,41 @@
 <h1>Edit user</h1>
 <div class="name">
-    <p>Имя: <%= @user.name %></p>
+    <p>Имя: 
+        <div id="current_name">
+            <%= @user.name %>
+        </div>
+    </p>
     <%= turbo_frame_tag 'name' do %>
         <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
     <% end %>
 </div>
 <div class="surname">
-    <p>Фамилия: <%= @user.surname %></p>
+    <p>Фамилия: 
+        <div id="current_surname">
+            <%= @user.surname %>
+        </div>  
+    </p>
     <%= turbo_frame_tag 'surname' do %>
         <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
     <% end %>
 </div>
 <div class="middle_name">
-    <p>Отчество: <%= @user.middle_name %></p>
+    <p>Отчество: 
+        <div id="current_middle_name">
+            <%= @user.middle_name %>
+        </div>        
+    </p>
     <%= turbo_frame_tag 'middle_name' do %>
+        <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
+    <% end %>
+</div>
+<div class="year">
+    <p>Год выпуска: 
+        <div id="current_year">
+            <%= @user.year %>
+        </div>
+    </p>
+    <%= turbo_frame_tag 'year' do %>
         <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
     <% end %>
 </div>
