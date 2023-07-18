@@ -1,4 +1,7 @@
 <% if user_signed_in? %>
+    <% if current_user.role == 'admin' %>
+      admin_page
+    <% end %>
     <%= button_to('Sign out', 'users/sign_out', :method => :delete) %>
 <% else %>
     <%= link_to 'login', 'users/sign_in' %>
