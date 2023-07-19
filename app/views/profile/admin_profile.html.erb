@@ -8,6 +8,7 @@
         <% unless user.middle_name.empty? %>
           <p>Отчество: <%= user.middle_name %></p>
         <% end %>
+        <p>Год выпуска: <%= user.year %></p>
         <p>Дата создания: <%= user.created_at %></p>
         <p>Дата обновления: <%= user.updated_at %></p>
         <p>Роль: <div id="role"><%= user.role %></div></p>
@@ -20,8 +21,7 @@
         </div>
             <a href="/profile/edit/<%= user.id %>" class="btn btn-danger">Изменить данные пользователя</a>
             <br>
-            <%= button_to 'Удалить пользователя', "/profile/destroy/#{user.id}" %>
-            <a href="/profile/destroy/<%= user.id %>" class="btn btn-danger">Удалить пользователя</a>
+            <%= button_to 'Удалить пользователя', "/profile/destroy/#{user.id}", method: :delete %>
       </div>
     </div>
     <br>

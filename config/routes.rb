@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'request/index'
   get 'profile/change/:id', to: 'profile#change'
   put 'profile/update/:field/:id', to: 'profile#update'
+  delete 'profile/destroy/:id', to: 'profile#destroy'
   devise_for :users, path_name: { sign_up: 'registrations/new' }, controllers: { registrations: 'users/registrations' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

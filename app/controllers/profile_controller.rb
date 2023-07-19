@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   before_action :check_admin, only: %i[admin_profile set_admin update change edit]
-  before_action :get_user_id, only: %i[set_admin edit change update]
+  before_action :get_user_id, only: %i[set_admin edit change update destroy]
   def admin_profile
     # @users = User.where.not(role: 'admin')
     @users = User.where.not(email: 'admin@admin.ru')
@@ -48,6 +48,10 @@ class ProfileController < ApplicationController
   end
 
   def change_role
+  end
+
+  def destroy
+    User.delete(@user_id)
   end
 
   private
