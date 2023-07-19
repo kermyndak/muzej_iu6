@@ -1,8 +1,10 @@
 class ProfileController < ApplicationController
-  before_action :check_admin, only: :admin_profile
+  before_action :check_admin, only: %i[admin_profile set_admin update change edit]
   before_action :get_user_id, only: %i[set_admin edit change update]
   def admin_profile
-    @users = User.where.not(role: 'admin')
+    # @users = User.where.not(role: 'admin')
+    @users = User.where.not(email: 'admin@admin.ru')
+    # @users = User.all
   end
 
   def profile
@@ -15,7 +17,6 @@ class ProfileController < ApplicationController
     else
       @user.update_column(:role, 'user')
     end
-    turbo_stream.update('role', partial: 'change_role')
     render partial: 'admin'
   end
 

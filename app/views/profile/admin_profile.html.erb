@@ -10,17 +10,18 @@
         <% end %>
         <p>Дата создания: <%= user.created_at %></p>
         <p>Дата обновления: <%= user.updated_at %></p>
-        <p id="role">Роль: <%= user.role %></p>
-        <%= turbo_frame_tag 'set_admin' do %>
+        <p>Роль: <div id="role"><%= user.role %></div></p>
+        <div id="set_admin">
           <% if user.role == 'user' %>
-            <a href="/profile/set_admin/<%= user.id %>" class="btn btn-primary">Назначить администратором</a>  
+            <%= button_to 'Назначить администратором', "/profile/set_admin/#{ user.id }", method: :put %>
           <% else %>
-            <a href="/profile/set_admin/<%= user.id %>" class="btn btn-danger">Сделать обычным пользователем</a>
+            <%= button_to 'Сделать обычным пользователем', "/profile/set_admin/#{ user.id }", method: :put %>
           <% end %>
-        <% end %>
+        </div>
             <a href="/profile/edit/<%= user.id %>" class="btn btn-danger">Изменить данные пользователя</a>
             <br>
-            <a href="/profile/destroy?user=<%= user.id %>" class="btn btn-danger">Удалить пользователя</a>
+            <%= button_to 'Удалить пользователя', "/profile/destroy/#{user.id}" %>
+            <a href="/profile/destroy/<%= user.id %>" class="btn btn-danger">Удалить пользователя</a>
       </div>
     </div>
     <br>
