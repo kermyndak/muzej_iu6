@@ -69,16 +69,14 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     user_name:      'muzej.iu6@mail.ru',
-    password:       '03Du$IK5*qYV',
-    # password:       '8URaVqSu1tbXi1GqJYHQ',
+    password:       '8URaVqSu1tbXi1GqJYHQ',
     ssl: true,
     domain:         'mail.ru',
     address:       'smtp.mail.ru',
     port:          '465',
-    authentication: :login,
+    authentication: 'plain',
     enable_starttls_auto: true
   }
-
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
