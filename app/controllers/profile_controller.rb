@@ -1,7 +1,7 @@
 class ProfileController < ApplicationController
   before_action :check_session
   before_action :check_admin, only: %i[admin_profile set_admin update change edit]
-  before_action :get_user_id, only: %i[set_admin edit change update destroy]
+  before_action :get_user_id, only: %i[set_admin edit change update confirm_destroy destroy cancel_destroy]
   def admin_profile
     @users = User.where.not(email: 'admin@admin.ru').select(&:confirmed?)
   end
@@ -50,7 +50,16 @@ class ProfileController < ApplicationController
   end
 
   def destroy
+    render partial: 'confirm_destroy'
+  end
+
+  def cancel_destroy
+    render partial: 'destroy_button'
+  end
+
+  def confirm_destroy
     User.delete(@user_id)
+    render turbo_stream: turbo_stream.remove("card_#{@user_id}")
   end
 
   private

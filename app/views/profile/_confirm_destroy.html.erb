@@ -1,0 +1,4 @@
+<%= turbo_frame_tag 'button_delete' do %>
+    <%= button_to 'Отменить', "/profile/cancel_destroy/#{@user_id}" %>
+    <%= button_to 'Подтвердить удаление пользователя', "/profile/confirm_destroy/#{@user_id}", method: :delete %>
+<% end %>

@@ -1,0 +1,3 @@
+<%= turbo_frame_tag 'button_delete' do %>
+    <%= button_to 'Удалить пользователя', "/profile/destroy/#{@user_id}" %>
+<% end %>

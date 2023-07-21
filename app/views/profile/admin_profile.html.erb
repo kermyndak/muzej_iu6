@@ -1,7 +1,7 @@
 <%= javascript_include_tag 'destroy_pause' %>
 <h1>Users</h1>
 <% @users.each do |user| %>
-    <div class="card">
+    <div class="card" id="card_<%= user.id %>">
       <div class="card-body">
         <h3 class="card-title">Email: <%= user.email %></h3>
         <p>Имя: <%= user.name %></p>
@@ -12,8 +12,8 @@
         <p>Год выпуска: <%= user.year %></p>
         <p>Дата создания: <%= user.created_at %></p>
         <p>Дата обновления: <%= user.updated_at %></p>
-        <p>Роль: <div id="role"><%= user.role %></div></p>
-        <div id="set_admin">
+        <p>Роль: <div id="role_<%= user.id %>"><%= user.role %></div></p>
+        <div id="set_admin_<%= user.id %>">
           <% if user.role == 'user' %>
             <%= button_to 'Назначить администратором', "/profile/set_admin/#{ user.id }", method: :put %>
           <% else %>
@@ -22,9 +22,9 @@
         </div>
             <a href="/profile/edit/<%= user.id %>" class="btn btn-danger">Изменить данные пользователя</a>
             <br>
-            <button type="button" id="button_destroy" onclick="stop_destroy()">
-            <%= button_to 'Удалить пользователя', "/profile/destroy/#{user.id}", method: :delete, id: 'button_destroy', onclick: 'stop_destroy()' %>
-            <div id="timer_destroy"></div>
+            <%= turbo_frame_tag 'button_delete' do %>
+                <%= button_to 'Удалить пользователя', "/profile/destroy/#{user.id}" %>
+            <% end %>
       </div>
     </div>
     <br>

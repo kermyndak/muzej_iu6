@@ -1,4 +1,4 @@
-<%= turbo_stream.update 'set_admin' do %>
+<%= turbo_stream.update "set_admin_#{@user_id}" do %>
   <% if @user.role == 'user' %>
     <%= button_to 'Назначить администратором', "/profile/set_admin/#{ @user_id }", method: :put %>
   <% else %>
@@ -6,7 +6,7 @@
   <% end %>
 <% end %>
 
-<%= turbo_stream.update 'role' do %>
+<%= turbo_stream.update "role_#{@user_id}" do %>
   <% if @user.role == 'user' %>
     user 
   <% else %>
