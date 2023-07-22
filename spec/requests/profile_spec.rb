@@ -136,6 +136,18 @@ RSpec.describe "Profiles", type: :request do
       get '/profile/change/99'
       expect(response).to redirect_to(root_path)
     end
+
+    it 'check error on update other user' do
+      post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
+      get "/profile/change/0"
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'check not error on update other user from admin' do
+      post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
+      get "/profile/change/#{@user.id}"
+      expect(response).to have_http_status(:success)
+    end
   end
 
   describe "PUT profile/update" do
@@ -188,10 +200,16 @@ RSpec.describe "Profiles", type: :request do
       expect(response).to redirect_to(new_user_session_url)
     end
 
-    it 'redirect to root_path if default user log in' do
+    it 'return http status success' do
+      post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
+      post "/profile/destroy/#{@user.id}", xhr: true
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'not redirect to root_path if default user log in and request with other user parameter' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       post '/profile/destroy/99', xhr: true
-      expect(response).to redirect_to(root_path)
+      expect(response).to have_http_status(:success)
     end
   end
 
@@ -211,10 +229,16 @@ RSpec.describe "Profiles", type: :request do
       expect(response).to redirect_to(new_user_session_url)
     end
 
-    it 'redirect to root_path if default user log in' do
+    it 'return http status success' do
+      post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
+      post "/profile/cancel_destroy/#{@user.id}", xhr: true
+      expect(response).to have_http_status(:success)
+    end
+
+    it 'not redirect to root_path if default user log in and request with other user parameter' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       post '/profile/cancel_destroy/99', xhr: true
-      expect(response).to redirect_to(root_path)
+      expect(response).to have_http_status(:success)
     end
   end
 
@@ -234,10 +258,16 @@ RSpec.describe "Profiles", type: :request do
       expect(response).to redirect_to(new_user_session_url)
     end
 
-    it 'redirect to root_path if default user log in' do
+    it 'check error on delete other user' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      delete '/profile/confirm_destroy/99', xhr: true
+      delete "/profile/confirm_destroy/0"
       expect(response).to redirect_to(root_path)
+    end
+
+    it 'check not error on delete other user from admin' do
+      post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
+      delete "/profile/confirm_destroy/#{@user.id}"
+      expect(response).to have_http_status(200)
     end
   end
 end
