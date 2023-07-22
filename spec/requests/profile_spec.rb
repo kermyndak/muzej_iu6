@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.describe "Profiles", type: :request do
+  before do
+    @admin_user = User.create(email: "tester@admin.ru", password: "password", name: 'Tester_admin', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243', role: 'admin')
+    @user = User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
+  end
   describe "GET profile/admin_profile" do
     it 'return http status 302' do
       get profile_admin_profile_url
@@ -18,14 +22,12 @@ RSpec.describe "Profiles", type: :request do
     end
 
     it 'return http status success' do
-      User.create(email: "tester@admin.ru", password: "password", name: 'Tester_admin', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243', role: 'admin')
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
       get profile_admin_profile_url
       expect(response).to have_http_status(200)
     end
 
     it 'redirect to root_path if default user log in' do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       get profile_admin_profile_url
       expect(response).to redirect_to(root_path)
@@ -49,7 +51,6 @@ RSpec.describe "Profiles", type: :request do
     end
 
     it 'return http status success' do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       get profile_profile_url
       expect(response).to have_http_status(200)
@@ -73,7 +74,6 @@ RSpec.describe "Profiles", type: :request do
     end
 
     it 'redirect to root_path if default user log in' do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       put '/profile/set_admin/99'
       expect(response).to redirect_to(root_path)
@@ -97,14 +97,12 @@ RSpec.describe "Profiles", type: :request do
     end
 
     it 'return http status success' do
-      User.create(email: "tester@admin.ru", password: "password", name: 'Tester_admin', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243', role: 'admin')
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
       get "/profile/edit/#{User.all[0].id}"
       expect(response).to have_http_status(200)
     end
 
     it 'redirect to root_path if default user log in' do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       '/profile/edit/99'
       expect(response).to redirect_to(root_path)
@@ -128,16 +126,14 @@ RSpec.describe "Profiles", type: :request do
     end
 
     it 'return http status success' do
-      User.create(email: "tester@admin.ru", password: "password", name: 'Tester_admin', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243', role: 'admin')
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
       get "/profile/change/#{User.all[0].id}"
       expect(response).to have_http_status(200)
     end
 
     it 'redirect to root_path if default user log in' do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      '/profile/change/99'
+      get '/profile/change/99'
       expect(response).to redirect_to(root_path)
     end
   end
@@ -158,8 +154,18 @@ RSpec.describe "Profiles", type: :request do
       expect(response).to redirect_to(new_user_session_url)
     end
 
+    it 'check error on update other user' do
+      post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
+      put "/profile/update/name/0"
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'check not error on update other user from admin' do
+      post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
+      expect{ put "/profile/update/name/#{@user.id}" }.to raise_error(ActionView::MissingTemplate)
+    end
+
     it 'redirect to root_path if default user log in' do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       put '/profile/update/name/99'
       expect(response).to redirect_to(root_path)
@@ -183,7 +189,6 @@ RSpec.describe "Profiles", type: :request do
     end
 
     it 'redirect to root_path if default user log in' do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       post '/profile/destroy/99', xhr: true
       expect(response).to redirect_to(root_path)
@@ -207,7 +212,6 @@ RSpec.describe "Profiles", type: :request do
     end
 
     it 'redirect to root_path if default user log in' do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       post '/profile/cancel_destroy/99', xhr: true
       expect(response).to redirect_to(root_path)
@@ -231,7 +235,6 @@ RSpec.describe "Profiles", type: :request do
     end
 
     it 'redirect to root_path if default user log in' do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       delete '/profile/confirm_destroy/99', xhr: true
       expect(response).to redirect_to(root_path)

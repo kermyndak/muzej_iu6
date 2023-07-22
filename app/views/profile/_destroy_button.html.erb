@@ -1,3 +1,7 @@
 <%= turbo_frame_tag 'button_delete' do %>
-    <%= button_to 'Удалить пользователя', "/profile/destroy/#{@user_id}" %>
+    <% if current_user.id == @user_id %>
+        <%= button_to 'Удалить аккаунт', "/profile/destroy/#{current_user.id}" %>
+    <% else %>
+        <%= button_to 'Удалить пользователя', "/profile/destroy/#{@user_id}" %>
+    <% end %>
 <% end %>

@@ -1,12 +1,10 @@
 class ProfileController < ApplicationController
   before_action :check_session
-  before_action :check_admin, only: %i[admin_profile set_admin update change edit destroy cancel_destroy confirm_destroy]
+  before_action :check_admin, only: %i[admin_profile set_admin edit]
   before_action :get_user_id, only: %i[set_admin edit change update confirm_destroy destroy cancel_destroy]
+  before_action :check_id, only: %i[change update confirm_destroy]
   def admin_profile
     @users = User.where.not(email: 'admin@admin.ru').select(&:confirmed?)
-  end
-
-  def profile
   end
 
   def set_admin
@@ -57,10 +55,23 @@ class ProfileController < ApplicationController
   # Delete user
   def confirm_destroy
     User.delete(@user_id)
-    render turbo_stream: turbo_stream.remove("card_#{@user_id}")
+    if current_user.id == @user_id
+      render turbo_stream: turbo_stream.remove('button_delete')
+    else
+      render turbo_stream: turbo_stream.remove("card_#{@user_id}")
+    end
+  end
+
+  def profile
   end
 
   private
+  def check_id
+    if current_user.role != 'admin' && current_user.id != @user_id
+      redirect_to root_path
+    end
+  end
+
   def check_admin
     if current_user.role != 'admin'
       redirect_to root_path
