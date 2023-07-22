@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'profile/profile'
   get 'profile/edit/:id', to: 'profile#edit'
   put 'profile/set_admin/:id', to: 'profile#set_admin'
-  get 'profile/change_role'
   get 'request/index'
   get 'profile/change/:id', to: 'profile#change'
   put 'profile/update/:field/:id', to: 'profile#update'
