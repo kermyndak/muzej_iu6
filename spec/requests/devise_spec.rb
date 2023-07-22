@@ -17,7 +17,12 @@ RSpec.describe "Devises controllers", type: :request do
 
   describe "POST users/sign_in" do
     before do
-      User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
+      User.create(
+        email: "tester@test.ru", password: "password", 
+        password_confirmation: 'password', name: 'Tester', 
+        surname: "Tester_surname", middle_name: "Tester_middle_name", 
+        year: 2000, confirmed_at: '2023-07-21 10:25:15.076243'
+      )
     end
     it 'return http redirected' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}

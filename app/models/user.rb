@@ -3,7 +3,7 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :timeoutable, :confirmable
-  
+
   validates :email, {
     presence: {
       message: "Электронная почта должна быть заполнена"
@@ -24,9 +24,17 @@ class User < ApplicationRecord
     }
   }
 
+  validates_confirmation_of :password, {
+    message: 'Пароли не совпадают'
+  }
+
+  validates_presence_of :password_confirmation, {
+    message: 'Пароль нужно подтвердить'
+  }
+
   validates :name, {
     presence: {
-      message: "Имя должна присутствовать"
+      message: "Имя должно присутствовать"
     }
   }
 

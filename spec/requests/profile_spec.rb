@@ -2,8 +2,17 @@ require 'rails_helper'
 
 RSpec.describe "Profiles", type: :request do
   before do
-    @admin_user = User.create(email: "tester@admin.ru", password: "password", name: 'Tester_admin', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243', role: 'admin')
-    @user = User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
+    @admin_user = User.create(
+      email: "tester@admin.ru", password: "password", 
+      password_confirmation: 'password', name: 'Tester_admin', 
+      surname: "Tester_surname", middle_name: "Tester_middle_name", 
+      year: 2000, confirmed_at: '2023-07-21 10:25:15.076243', role: 'admin'
+    )
+    @user = User.create(email: "tester@test.ru", password: "password", 
+      password_confirmation: 'password', name: 'Tester', 
+      surname: "Tester_surname", middle_name: "Tester_middle_name", 
+      year: 2000, confirmed_at: '2023-07-21 10:25:15.076243'
+    )
   end
   describe "GET profile/admin_profile" do
     it 'return http status 302' do
