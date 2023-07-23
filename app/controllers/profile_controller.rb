@@ -54,7 +54,7 @@ class ProfileController < ApplicationController
 
   # Delete user
   def confirm_destroy
-    User.delete(@user_id)
+    User.destroy(@user_id)
     if current_user.id == @user_id
       render turbo_stream: turbo_stream.remove('button_delete')
     else
