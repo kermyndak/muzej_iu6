@@ -66,14 +66,14 @@ class ProfileController < ApplicationController
   end
 
   private
-  def check_id
-    if current_user.role != 'admin' && current_user.id != @user_id
+  def check_admin
+    if current_user.role != 'admin'
       redirect_to root_path
     end
   end
-
-  def check_admin
-    if current_user.role != 'admin'
+  
+  def check_id
+    if current_user.role != 'admin' && current_user.id != @user_id
       redirect_to root_path
     end
   end

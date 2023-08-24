@@ -1,0 +1,29 @@
+<h1>Requests</h1>
+<% @requests.each do |request| %>
+    <hr>
+    <div class="card" id="card_<%= request.id %>">
+      <div class="card-body">
+        <h3 class="card-title">User: <%= User.find(request.user_id).email %></h3>
+        <p>Имя: <%= User.find(request.user_id).name %></p>
+        <p>Фамилия: <%= User.find(request.user_id).surname %></p>
+        <% unless User.find(request.user_id).middle_name.empty? %>
+          <p>Отчество: <%= User.find(request.user_id).middle_name %></p>
+        <% end %>
+        <p>Год выпуска: <%= User.find(request.user_id).year %></p>
+        <p>Дата создания: <%= User.find(request.user_id).created_at %></p>
+        <p>Дата обновления: <%= User.find(request.user_id).updated_at %></p>
+        <p>Роль: <div id="role_<%= User.find(request.user_id).id %>"><%= User.find(request.user_id).role %></div></p>
+        <p>Message: <%= request.message %></p>
+        <% unless request.images_attachments.empty? %>
+            <p>Images: <% request.images.each do |image| %>
+                <%= link_to(image_tag(image, style: "width: 150px; height: 150px; display: block;"), image) %>
+            <% end %></p>
+        <% end %>
+        <% unless request.files_attachments.empty? %>
+            <p>Files: <% request.files.each do |file| %>
+                <%= link_to(file.blob.filename, file) %>
+            <% end %></p>
+        <% end %>
+    </div>
+    <br>
+<% end %>

@@ -1,0 +1,21 @@
+<h2>Send request</h2>
+<%= form_with url: '/request/create', method: :post do |form| %>
+    <div>
+        <%= form.label :message %>
+        <%= form.text_area :message %>
+    </div>
+
+    <div>
+        <%= form.label :images %>
+        <%= form.file_field :images, multiple: true %>
+    </div>
+
+    <div>
+        <%= form.label :files %>
+        <%= form.file_field :files, multiple: true %>
+    </div>
+
+    <%= form.submit %>
+<% end %>
+
+<%= button_to 'Back', '/', method: :get %>

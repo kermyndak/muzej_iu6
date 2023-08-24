@@ -1,9 +1,13 @@
 <% if user_signed_in? %>
     <% if current_user.role == 'admin' %>
       <%= link_to 'admin_profile', '/profile/admin_profile' %>
+      <br>
+      <%= link_to 'Requests', '/request/admin' %>
     <% end %>
     <br>
-    <%= link_to 'my_profile', '/profile/profile' %>
+    <%= link_to 'send request', '/request/send_request' %>
+    <br>
+    <%= link_to 'my profile', '/profile/profile' %>
     <%= button_to('Sign out', 'users/sign_out', :method => :delete) %>
 <% else %>
     <%= link_to 'login', 'users/sign_in' %>
