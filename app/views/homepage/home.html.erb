@@ -13,3 +13,11 @@
     <%= link_to 'login', 'users/sign_in' %>
     <%= link_to 'signup', 'users/sign_up' %>
 <% end %>
+
+<% Request.all.each do |request| %>
+  <% request.images_blobs.each do |image| %>
+    <% if image.success %>
+      <%= link_to(image_tag(image), image) %>
+    <% end %>
+  <% end %>
+<% end %>

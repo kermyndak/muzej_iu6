@@ -1,4 +1,4 @@
-<h1>Requests</h1>
+<h1>Already read requests</h1>
 <% @requests.each do |request| %>
     <div class="card" id="card_<%= request.id %>">
         <hr>
@@ -29,5 +29,4 @@
     <br>
 <% end %>
 
-<%= link_to "already readed requests", '/request/already_read' %>
-<%= button_to 'Back', '/', method: :get %>
+<%= button_to 'Back', '/request/admin', method: :get %>
