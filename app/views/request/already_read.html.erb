@@ -11,13 +11,13 @@
             <% end %>
             <p>Год выпуска: <%= User.find(request.user_id).year %></p>
             <p>Message: <%= request.message %></p>
-            <% unless request.images_attachments.empty? %>
+            <% if request.images.attached? %>
                 <p>Images: <% request.images.each do |image| %>
                     <%= link_to(image_tag(image, style: "width: 150px; height: 150px; display: block;"), image) %>
                     <%= check_box("image", image.id, {checked: false}) %>
                 <% end %></p>
             <% end %>
-            <% unless request.files_attachments.empty? %>
+            <% if request.files.attached? %>
                 <p>Files: <% request.files.each do |file| %>
                     <%= link_to(file.blob.filename, file) %>
                     <%= check_box("file", file.id, {checked: false}) %>
