@@ -17,13 +17,15 @@ class RequestController < ApplicationController
 
   def read
     request = Request.find(@request_id)
-    @images.each { |key, _value| request.images_blobs
-                                        .find(key)
-                                        .update_column(:success, true) } unless @images.nil?
-    p @images
-    @some_files.each { |key, _value| request.files_blobs
-                                       .find(key)
-                                       .update_column(:success, true) } unless @some_files.nil?
+    @images.each do |key, _value| 
+      request.images_blobs.find(key).update_column(:success, true)
+      m = MuseumFile.new(file_type: 'image')
+      # m.file_attachment = 
+    end unless @images.nil?
+
+    @some_files.each do |key, _value| 
+      request.files_blobs.find(key).update_column(:success, true)
+    end unless @some_files.nil?
     request.update_column(:read, true)
     render turbo_stream: turbo_stream.remove("card_#{@request_id}")
   end
