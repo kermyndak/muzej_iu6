@@ -21,9 +21,9 @@ class RequestController < ApplicationController
                                         .find(key)
                                         .update_column(:success, true) } unless @images.nil?
     p @images
-    @files.each { |key, _value| request.files_blobs
+    @some_files.each { |key, _value| request.files_blobs
                                        .find(key)
-                                       .update_column(:success, true) } unless @files.nil?
+                                       .update_column(:success, true) } unless @some_files.nil?
     request.update_column(:read, true)
     render turbo_stream: turbo_stream.remove("card_#{@request_id}")
   end
@@ -48,13 +48,13 @@ class RequestController < ApplicationController
 
   def read_param
     @images = params[:image]
-    @files = params[:file]
+    @some_files = params[:file]
     unless @images.nil?
       @images.select! {|_key, value| value == '1'}
     end
 
     unless @files.nil?
-      @files.select! {|_key, value| value == '1'}
+      @some_files.select! {|_key, value| value == '1'}
     end
   end
 
@@ -65,6 +65,6 @@ class RequestController < ApplicationController
   end
 
   def request_params
-    params.permit(:message, images: [], files: [])
+    params.permit(:message, images: [], some_files: [])
   end
 end

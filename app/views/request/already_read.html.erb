@@ -17,8 +17,8 @@
                     <%= check_box("image", image.id, {checked: false}) %>
                 <% end %></p>
             <% end %>
-            <% if request.files.attached? %>
-                <p>Files: <% request.files.each do |file| %>
+            <% if request.some_files.attached? %>
+                <p>Files: <% request.some_files.each do |file| %>
                     <%= link_to(file.blob.filename, file) %>
                     <%= check_box("file", file.id, {checked: false}) %>
                 <% end %></p>
