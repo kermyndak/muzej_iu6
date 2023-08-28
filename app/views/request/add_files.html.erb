@@ -1,0 +1,16 @@
+<h1>Add files</h1>
+<%= form_with url: '/request/create', method: :post do |form| %>
+    <div>
+        <%= form.label :images %>
+        <%= form.file_field :images, multiple: true %>
+    </div>
+
+    <div>
+        <%= form.label :some_files %>
+        <%= form.file_field :some_files, multiple: true %>
+    </div>
+
+    <%= form.submit %>
+<% end %>
+
+<%= button_to 'Back', '/', method: :get %>

@@ -19,12 +19,10 @@ class RequestController < ApplicationController
     request = Request.find(@request_id)
     @images.each do |key, _value| 
       request.images_blobs.find(key).update_column(:success, true)
-      m = MuseumFile.new(file_type: 'image')
-      # m.file_attachment = 
     end unless @images.nil?
 
     @some_files.each do |key, _value| 
-      request.files_blobs.find(key).update_column(:success, true)
+      request.some_files_blobs.find(key).update_column(:success, true)
     end unless @some_files.nil?
     request.update_column(:read, true)
     render turbo_stream: turbo_stream.remove("card_#{@request_id}")
@@ -35,6 +33,9 @@ class RequestController < ApplicationController
     @request.user_id = current_user.id
 
     @request.save!
+  end
+
+  def add_files
   end
 
   private

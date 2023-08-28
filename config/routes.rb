@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   get 'request/admin'
   get 'request/already_read'
   get 'request/send_request'
+  get 'request/add_files'
   post 'request/create'
   post 'request/read/:id', to: 'request#read'
   get 'profile/change/:id', to: 'profile#change'

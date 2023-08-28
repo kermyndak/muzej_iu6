@@ -32,6 +32,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_202241) do
     t.string "service_name", null: false
     t.bigint "byte_size", null: false
     t.string "checksum"
+    t.string "chapter"
     t.boolean "success", default: false
     t.datetime "created_at", null: false
     t.index ["key"], name: "index_active_storage_blobs_on_key", unique: true
