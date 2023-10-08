@@ -68,3 +68,5 @@ end
 gem "devise", "~> 4.9"
 
 gem "rspec-rails", "~> 6.0"
+
+gem "google-apis-youtube_v3", "~> 0.32.0"
