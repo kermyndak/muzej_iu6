@@ -15,7 +15,8 @@
         <%= form.file_field :some_files, multiple: true %>
     </div>
 
-    <%= form.submit %>
+    <%= form.submit 'Save', id: 'save-btn' %>
 <% end %>
 
 <%= button_to 'Back', '/', method: :get %>
+<%= javascript_include_tag 'slider_on_save_button' %>

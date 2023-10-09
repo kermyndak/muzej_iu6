@@ -1,6 +1,7 @@
 body{
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
+    color: #18305E;
 }
 
 .container {
@@ -13,7 +14,7 @@ body{
     /* align-items: center; */
     gap: 30px;
     flex: 1 0 0;
-    margin: 20px 0px;
+    margin: 10px 0px;
 }
 
 .cont_title {
@@ -27,13 +28,29 @@ body{
     /* max-width: 468px; */
 }
 
+.link{
+    text-decoration: none;
+    color: #18305E;
+}
+
+header {
+    display: flex;
+    height: 80px;
+    padding: 0px 50px 0px 50px;
+    align-items: center;
+    font-size: 16px;
+    font-weight: 500;
+    justify-content: space-between;
+    box-shadow: 0px 20px 70px 0px rgba(0, 0, 0, 0.10);
+}
+
 .menu {
     display: flex;
     align-items: center;
     justify-content: space-around;
     gap: 30px;
     width: 100%;
-    margin-left: 20px;
+    margin: 0px 60px;
 }
 
 .main{
@@ -43,7 +60,7 @@ body{
     justify-content: center;
     align-items: center;
     background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.06) 0.46%, rgba(0, 0, 0, 0.30) 100%), lightgray -0.309px 0px / 100.032% 187.613% no-repeat;
-    background-image: url("assets/header/font_BMSTU.jpg");
+    background-image: url("header/font_BMSTU.jpg");
     background-size: cover;
     background-position: center;
     color: white;
@@ -53,12 +70,14 @@ body{
     /* color: #FFF; */
     font-size: 50px;
     /* font-style: normal; */
+    /* display: flex; */
     font-weight: 700;
     /* line-height: normal; */
+    justify-content: center;
     letter-spacing: 3px;
 }
 
-button {
+.button {
     display: inline-flex;
     padding: 15px 70px;
     justify-content: center;
@@ -71,6 +90,7 @@ button {
     color: white;
     font-size: 16px;
     font-weight: 600;
+    text-decoration: none;
 }
 
 
@@ -88,21 +108,29 @@ button {
 .sections {
     /* background-color: aqua; */
     display: flex;
+    flex-wrap: wrap;
     /* width: 1820px; */
     padding: 110px 50px;
     justify-content: center;
-    align-items: flex-start;
-    gap: 160px;
+    /* align-items: flex-start; */
+    gap: 50px 160px;
 }
 
 .image {
-    /* border-radius: 20px; */
     height: 307px;
-    align-self: stretch;
     background: #FFF;
     box-shadow: 0px 20px 70px 0px rgba(0, 0, 0, 0.20);
     border-radius: 20px;
     /* background-image: url("./../images/content/historyIU6.jpg"); */
-    background-size: cover;
-    background-position: center;
+    object-fit: cover;
+    max-width: 450px;
+}
+
+footer {
+    height: 100px;
+    color: white;
+    background: #2D5AB1;
+    display: flex;
+    padding: 20px 50px;
+    box-shadow: 0px 0px 40px 0px rgba(0, 0, 0, 0.25);
 }

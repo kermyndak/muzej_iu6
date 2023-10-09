@@ -1,5 +1,16 @@
 class HomepageController < ApplicationController
   def home
-    @images = ActiveStorage::Blob.all.select { |f| f.image? && f.success}
+  end
+
+  def museum
+  end
+
+  def materials
+  end
+
+  def teachers
+  end
+
+  def history
   end
 end

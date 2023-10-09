@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   root 'homepage#home'
+  get 'homepage/museum'
+  get 'homepage/materials'
+  get 'homepage/teachers'
+  get 'homepage/history'
   get 'profile/admin_profile'
   get 'profile/profile'
   get 'profile/edit/:id', to: 'profile#edit'

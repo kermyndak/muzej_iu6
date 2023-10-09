@@ -15,15 +15,46 @@
 
   <body>
     <header>
-      <span class="logo">
-        <%= image_tag('header/logo.png', alt: 'logo') %>
+      <span>
+        <%= link_to root_path, class: 'link logo' do %>
+          <%= image_tag('header/logo.png', alt: 'logo') %>
+        <% end %>
       </span>
+      
       <div class="menu">
-        <span>История кафедры</span>
-        <span>Преподаватели</span>
-        <span>Музей</span>
-        <span>Методические пособия</span>
+        <span>
+          <%= link_to('История кафедры', '/homepage/history', class: 'link') %>
+        </span>
+        <span>
+          <%= link_to('Преподаватели', '/homepage/teachers', class: 'link') %>
+        </span>
+        <span>
+          <%= link_to('Музей', '/homepage/museum', class: 'link') %>
+        </span>
+        <span>
+          <%= link_to('Методические пособия', '/homepage/materials', class: 'link') %>
+        </span>
       </div>
+
+      <span>
+        <% if user_signed_in? %>
+          <% if current_user.role == 'admin' %>
+            <%= link_to 'admin_profile', '/profile/admin_profile' %>
+            <br>
+            <%= link_to 'Requests', '/request/admin' %>
+            <br>
+            <%= link_to 'Add files', '/request/add_files' %>
+          <% end %>
+          <br>
+          <%= link_to 'send request', '/request/send_request' %>
+          <br>
+          <%= link_to 'my profile', '/profile/profile' %>
+          <%= button_to('Sign out', '/users/sign_out', :method => :delete) %>
+        <% else %>
+          <%= link_to 'Войти', '/users/sign_in', class: 'button' %>
+          <%# <%= link_to 'signup', 'users/sign_up' %>
+        <% end %>
+      </span>
     </header>
 
     <%= yield %>

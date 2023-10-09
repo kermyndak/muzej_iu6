@@ -1,10 +1,13 @@
 class RequestController < ApplicationController
-  before_action :check_admin, only: %i[admin read already_read]
+  before_action :check_admin, only: %i[admin read already_read add_files]
   before_action :get_request_id, only: %i[read]
   before_action :check_id, only: %i[send]
   before_action :read_param, only: :read
 
   def send_request
+    if !user_signed_in?
+      redirect_to root_path
+    end
   end
 
   def admin
@@ -31,7 +34,9 @@ class RequestController < ApplicationController
   def create # should be validate
     @request = Request.new(request_params)
     @request.user_id = current_user.id
-
+    if current_user.role == 'admin'
+      @request.read = true
+    end
     @request.save!
   end
 
@@ -40,7 +45,7 @@ class RequestController < ApplicationController
 
   private
   def check_admin
-    if current_user.role != 'admin'
+    if !user_signed_in? || current_user.role != 'admin'
       redirect_to root_path
     end
   end

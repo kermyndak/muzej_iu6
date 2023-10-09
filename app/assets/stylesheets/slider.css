@@ -1,0 +1,41 @@
+.slider {
+    position: absolute;
+    bottom: 20px;
+    left: 100vw;
+    z-index: 0;
+    background-color: rgba(56, 111, 219, 0.23);
+    backdrop-filter: blur(12px);
+    color: #18305E;
+    padding: 10px 20px;
+    border-radius: 10px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 40px;
+    width: 250px;
+}
+
+.slide-left {
+    transform: translateX(-100%);
+    transition-duration: 1s;
+}
+
+@keyframes fadeOut {
+    0% {opacity: 1;}
+    100% {opacity: 0;} 
+} 
+
+.fade-out {
+    animation: fadeOut 1s;
+}
+
+.cross-container {
+    width: 16px;
+    height: 16px;
+    justify-content: center;
+}
+
+.slider__text-container {
+    font-family: IBM Plex Sans;
+    white-space: nowrap;
+}
