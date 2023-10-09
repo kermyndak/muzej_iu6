@@ -24,7 +24,7 @@ RSpec.describe "Profiles", type: :request do
     it 'return http status success' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
       get profile_admin_profile_url
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:success)
     end
 
     it 'redirect to root_path if default user log in' do
@@ -43,7 +43,7 @@ RSpec.describe "Profiles", type: :request do
     it 'return http status success' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
       get profile_profile_url
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:success)
     end
   end
 
@@ -75,7 +75,7 @@ RSpec.describe "Profiles", type: :request do
     it 'return http status success' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
       get "/profile/edit/#{@user.id}"
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:success)
     end
 
     it 'redirect to root_path if default user log in' do
@@ -94,7 +94,7 @@ RSpec.describe "Profiles", type: :request do
     it 'return http status success' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
       get "/profile/change/#{@user.id}"
-      expect(response).to have_http_status(200)
+      expect(response).to have_http_status(:success)
     end
 
     it 'check error on update other user' do

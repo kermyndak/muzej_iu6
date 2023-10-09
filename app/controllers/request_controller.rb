@@ -1,7 +1,7 @@
 class RequestController < ApplicationController
   before_action :check_admin, only: %i[admin read already_read add_files]
   before_action :get_request_id, only: %i[read]
-  before_action :check_id, only: %i[send]
+  before_action :check_id, only: %i[]
   before_action :read_param, only: :read
 
   def send_request

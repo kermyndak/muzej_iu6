@@ -34,6 +34,7 @@ RSpec.describe "Devises controllers", type: :request do
   #   before do
   #     User.create(email: "tester@test.ru", password: "password", name: 'Tester', surname: "Tester_surname", middle_name: "Tester_middle_name", year: 2000, confirmed_at: '2023-07-21 10:25:15.076243')
   #     post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
+  #     get root_path
   #   end
   #   it 'return http unprocessable entity' do
   #     delete destroy_user_session_url, params: {_method: 'delete'}
