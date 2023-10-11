@@ -33,7 +33,7 @@ RSpec.describe "Requests", type: :request do
 
     it 'redirected for non auth' do
       get request_add_files_path
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 
@@ -52,7 +52,7 @@ RSpec.describe "Requests", type: :request do
 
     it 'redirected for non auth' do
       get request_send_request_path
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(new_user_session_path)
     end
   end
 
@@ -65,7 +65,7 @@ RSpec.describe "Requests", type: :request do
 
     it 'redirect for guest' do
       get request_admin_path
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(new_user_session_path)
     end
 
     it 'success for admin' do
@@ -84,7 +84,7 @@ RSpec.describe "Requests", type: :request do
 
     it 'redirect for guest' do
       get request_already_read_path
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(new_user_session_path)
     end
 
     it 'success for admin' do
@@ -97,7 +97,7 @@ RSpec.describe "Requests", type: :request do
   describe 'POST read' do
     it 'redirect for guest' do
       post "/request/read/#{@request_with_message.id}"
-      expect(response).to redirect_to(root_path)
+      expect(response).to redirect_to(new_user_session_path)
     end
 
     it 'redirect for default user' do
@@ -121,6 +121,44 @@ RSpec.describe "Requests", type: :request do
     it 'success for admin' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
       post "/request/read/#{@request_with_message.id}"
+      expect(response).to have_http_status(:success)
+    end
+  end
+
+  describe 'POST create' do
+    it 'redirect if guest' do
+      post request_create_url, params: {message: 'some message'}
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
+    it 'success if default user' do
+      post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
+      post request_create_url, params: {message: 'some message'}
+      expect(response).to have_http_status(204)
+    end
+
+    it 'success if admin' do
+      post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
+      post request_create_url, params: {message: 'some message'}
+      expect(response).to have_http_status(204)
+    end
+  end
+
+  describe 'GET add_files' do
+    it 'redirect if guest' do
+      get request_add_files_path
+      expect(response).to redirect_to(new_user_session_path)
+    end
+
+    it 'redirect if default user' do
+      post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
+      get request_add_files_path
+      expect(response).to redirect_to(root_path)
+    end
+
+    it 'success if admin' do
+      post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
+      get request_add_files_path
       expect(response).to have_http_status(:success)
     end
   end

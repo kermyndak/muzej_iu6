@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   get 'homepage/materials'
   get 'homepage/teachers'
   get 'homepage/history'
+  get 'homepage/profile_list'
+  get 'homepage/exit_profile_list'
   get 'profile/admin_profile'
   get 'profile/profile'
   get 'profile/edit/:id', to: 'profile#edit'
@@ -19,7 +21,7 @@ Rails.application.routes.draw do
   post 'profile/destroy/:id', to: 'profile#destroy'
   post 'profile/cancel_destroy/:id', to: 'profile#cancel_destroy'
   delete 'profile/confirm_destroy/:id', to: 'profile#confirm_destroy'
-  devise_for :users, path_name: { sign_up: 'registrations/new' }, controllers: { registrations: 'users/registrations' }
+  devise_for :users, path_name: { sign_up: 'registrations/new', sign_out: 'sessions/destroy' }, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

@@ -38,18 +38,9 @@
 
       <span>
         <% if user_signed_in? %>
-          <% if current_user.role == 'admin' %>
-            <%= link_to 'admin_profile', '/profile/admin_profile' %>
-            <br>
-            <%= link_to 'Requests', '/request/admin' %>
-            <br>
-            <%= link_to 'Add files', '/request/add_files' %>
+          <%= turbo_frame_tag 'profile' do %>
+            <%= link_to 'Профиль', '/homepage/profile_list' %>
           <% end %>
-          <br>
-          <%= link_to 'send request', '/request/send_request' %>
-          <br>
-          <%= link_to 'my profile', '/profile/profile' %>
-          <%= button_to('Sign out', '/users/sign_out', :method => :delete) %>
         <% else %>
           <%= link_to 'Войти', '/users/sign_in', class: 'button' %>
           <%# <%= link_to 'signup', 'users/sign_up' %>

@@ -1,13 +1,11 @@
 class RequestController < ApplicationController
+  before_action :check_session
   before_action :check_admin, only: %i[admin read already_read add_files]
   before_action :get_request_id, only: %i[read]
   before_action :check_id, only: %i[]
   before_action :read_param, only: :read
 
   def send_request
-    if !user_signed_in?
-      redirect_to root_path
-    end
   end
 
   def admin
@@ -45,7 +43,7 @@ class RequestController < ApplicationController
 
   private
   def check_admin
-    if !user_signed_in? || current_user.role != 'admin'
+    if current_user.role != 'admin'
       redirect_to root_path
     end
   end
@@ -73,6 +71,6 @@ class RequestController < ApplicationController
   end
 
   def request_params
-    params.permit(:message, images: [], some_files: [])
+    params.permit(:message, images: [], some_files: [])  
   end
 end
