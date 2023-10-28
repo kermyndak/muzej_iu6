@@ -4,10 +4,7 @@
   </div>
   <div class="group-form">
     <div class="text-title">
-        Создание учетной записи
-    </div>
-    <div class="text">
-    для пользователей, не имеющих корпоративную почту МГТУ им. Н.Э. Баумана
+        Вход
     </div>
   </div>
 
@@ -24,8 +21,9 @@
         </div>
 
         <% if devise_mapping.rememberable? %>
-          <div class="field">
-            <%= f.check_box :remember_me, placeholder: "Запомнить меня" %>
+          <div class="field group-form">
+            <%= f.check_box :remember_me %>
+            <%= f.label :"Запомнить меня" %>
           </div>
         <% end %>
         
@@ -33,7 +31,7 @@
         <%= render "devise/shared/links" %>
         </div>
 
-        <div class="button">
+        <div class="actions">
         <%= f.submit "Войти", class: "button" %>
         </div>
       <% end %>
