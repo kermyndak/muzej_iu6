@@ -14,13 +14,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # DELETE /resource/sign_out
-  def destroy
-    # super
-    signed_out = (Devise.sign_out_all_scopes ? sign_out : sign_out(resource_name))
-    set_flash_message! :notice, :signed_out if signed_out
-    yield if block_given?
-    render turbo_stream: turbo_stream.replace('profile', '<a href="/users/sign_in" class="button">Войти</a>')
-  end
+  # def destroy
+  #   # super
+  # end
 
   # protected
 

@@ -17,10 +17,10 @@ class HomepageController < ApplicationController
   end
 
   def profile_list
-    render partial: 'profile_list'
+    render turbo_stream: turbo_stream.update('profile', partial: 'profile_list')
   end
 
   def exit_profile_list
-    render partial: 'up_frame'
+    render turbo_stream: turbo_stream.update('profile', '<a href="/homepage/profile_list">Профиль</a>')
   end
 end

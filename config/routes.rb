@@ -21,7 +21,7 @@ Rails.application.routes.draw do
   post 'profile/destroy/:id', to: 'profile#destroy'
   post 'profile/cancel_destroy/:id', to: 'profile#cancel_destroy'
   delete 'profile/confirm_destroy/:id', to: 'profile#confirm_destroy'
-  devise_for :users, path_name: { sign_up: 'registrations/new', sign_out: 'sessions/destroy' }, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
+  devise_for :users, path_name: { sign_up: 'registrations/new' }, controllers: { registrations: 'users/registrations' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

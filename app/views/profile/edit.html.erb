@@ -39,6 +39,6 @@
         <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
     <% end %>
 </div>
-<%= button_to 'Back', '/profile/admin_profile', method: :get %>
+<%= link_to 'Back', '/profile/admin_profile' %>
 
 <%= javascript_include_tag 'profile' %>

@@ -46,6 +46,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_24_202241) do
 
   create_table "requests", force: :cascade do |t|
     t.text "message"
+    t.text "links", default: [], array: true
     t.boolean "read", default: false
     t.bigint "user_id"
     t.datetime "created_at", null: false

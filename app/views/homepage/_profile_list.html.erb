@@ -1,27 +1,25 @@
-<%= turbo_frame_tag 'profile' do %>
-    <ul>
-        <% if current_user.role == 'admin' %>
-            <li>
-                <%= link_to 'admin_profile', '/profile/admin_profile' %>
-            </li>
-            <li>
-                <%= link_to 'Requests', '/request/admin' %>
-            </li>
-            <li>
-                <%= link_to 'Add files', '/request/add_files' %>
-            </li>
-        <% end %>
+<ul>
+    <% if current_user.role == 'admin' %>
         <li>
-            <%= link_to 'send request', '/request/send_request' %>
+            <%= link_to 'admin_profile', '/profile/admin_profile' %>
         </li>
         <li>
-            <%= link_to 'my profile', '/profile/profile' %>
+            <%= link_to 'Requests', '/request/admin' %>
         </li>
         <li>
-            <%= button_to('Sign out', '/users/sign_out', :method => :delete) %>
+            <%= link_to 'Add files', '/request/add_files' %>
         </li>
-        <li>
-            <%= link_to 'ᐱ', '/homepage/exit_profile_list' %>
-        </li>
-    </ul>
-<% end %>
+    <% end %>
+    <li>
+        <%= link_to 'send request', '/request/send_request' %>
+    </li>
+    <li>
+        <%= link_to 'my profile', '/profile/profile' %>
+    </li>
+    <li>
+        <%= button_to('Sign out', '/users/sign_out', :method => :delete) %>
+    </li>
+    <li>
+        <%= link_to 'ᐱ', '/homepage/exit_profile_list' %>
+    </li>
+</ul>

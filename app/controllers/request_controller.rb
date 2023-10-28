@@ -35,7 +35,10 @@ class RequestController < ApplicationController
     if current_user.role == 'admin'
       @request.read = true
     end
+    @request.parse(params[:links])
     @request.save!
+    render turbo_stream: turbo_stream.replace('send_form', partial: 'create')
+    # render partial: 'create'
   end
 
   def add_files

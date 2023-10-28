@@ -44,4 +44,4 @@
     <%= button_to 'Удалить аккаунт', "/profile/destroy/#{current_user.id}" %>
 <% end %>
 <br>
-<%= button_to 'Back', root_path, method: :get, class: "btn btn-primary btn-sign-out" %>
+<%= link_to 'Back', root_path %>

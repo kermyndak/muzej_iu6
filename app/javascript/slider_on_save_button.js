@@ -3,10 +3,13 @@ const slider = document.getElementById('save-slider');
 const close_btn = document.getElementById('close-btn');
 const images = document.getElementById("images");
 const some_files = document.getElementById("some_files");
+const message_area = document.getElementById('message-area');
+const links_area = document.getElementById('links-area');
 
 save_btn.addEventListener('click', () => {
-    if (images.files.length || some_files.files.length)
+    if (images.files.length || some_files.files.length || links_area.value != ''){
         slider.classList.add("slide-left");
+    }
 })
 
 slider.addEventListener('animationend', () => {

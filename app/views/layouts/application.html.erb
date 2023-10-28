@@ -38,12 +38,11 @@
 
       <span>
         <% if user_signed_in? %>
-          <%= turbo_frame_tag 'profile' do %>
+          <div id="profile">
             <%= link_to 'Профиль', '/homepage/profile_list' %>
-          <% end %>
+          </div>
         <% else %>
           <%= link_to 'Войти', '/users/sign_in', class: 'button' %>
-          <%# <%= link_to 'signup', 'users/sign_up' %>
         <% end %>
       </span>
     </header>
