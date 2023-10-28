@@ -11,7 +11,7 @@
     display: flex;
     justify-content: center;
     max-width: 450px;
-    padding: 60px 40px;
+    padding: 30px 40px;
     flex-direction: column;
     align-items: center;
     grid-gap: 20px;
@@ -19,7 +19,7 @@
     background: #FFF;
     /* margin-left: auto; */
     /* position: relative; */
-    margin: auto;
+    margin: 3% auto;
     /* position: absolute;
     top:  50%;
     left: 50%; */
@@ -71,9 +71,9 @@ line-height: 23px; /* 164.286% */
 
 .group-form {
     display: grid;
-    width: 100%;
-    gap: 10px;
-    padding: 10px 0px;
+    width: 90%;
+    gap: 8px;
+    padding: 8px 0px;
 }
 
 form {

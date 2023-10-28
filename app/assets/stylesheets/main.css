@@ -238,7 +238,7 @@ outline-color: #386FDB;
 
 outline-width: thick;
 
-width: auto;
+width: -webkit-fill-available;
 }
 
 h1 {
