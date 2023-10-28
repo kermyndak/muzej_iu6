@@ -11,6 +11,7 @@ class HomepageController < ApplicationController
   end
 
   def teachers
+    @teachers = Teacher.all
   end
 
   def history

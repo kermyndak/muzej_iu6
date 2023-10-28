@@ -1,0 +1,21 @@
+<h1>List teachers</h1>
+<% @teachers.each do |teacher| %>
+    <div class="card" id="card_<%= teacher.id %>">
+      <div class="image">
+        <% if teacher.image.attached? %>
+            <%= link_to(image_tag(teacher.image, width: 238, height: 300), teacher.image) %> 
+        <% else %>
+            <%= image_tag('content/historyIU6.jpg', width: 238, height: 300) %>
+        <% end %>
+      </div>
+      <div class="card-body">
+        <h3 class="card-title">FIO: <%= teacher.fio %></h3>
+        <p>job_title: <%= teacher.job_title %></p>
+        <p>additional_information: <%= teacher.additional_information %></p>
+        <a href="/profile/edit_teacher/<%= teacher.id %>">Изменить данные пользователя</a>
+        <br>
+      </div>
+    </div>
+    <br>
+<% end %>
+<%= link_to 'home', root_path %>

@@ -2,7 +2,7 @@
       <h1 class="title">
         Преподаватели
       </h1>
-    </div>
+</div>
     <div class="searcher ">
         <div class="xx">
             <div class="x">
@@ -13,90 +13,28 @@
             </div>
         </div>
     </div>
-      <div class="content">
-
-
-      <div class="sections-teach">
-        
-          <span class="container-teach">
-              <div class="image">
-              </div>
-              <a href="./auth_form.html" class="group">
-              <div class="name-text">
-                  Иванова Галина Сергеевна
-              </div>
-              <div class="prof">
-                  д.т.н. Информатика доктор
-              </div>
-          </a>
-          </span>
-          <span class="container-teach">
-              <div class="image"></div>
-              <div class="group">
-              <div class="name-text">
-                  Иванова Галина Сергеевна
-              </div>
-              <div class="prof">
-                  д.т.н. Информатика доктор
-              </div>
-              </div>
-          </span>
-          <span class="container-teach">
-              <div class="image"></div>
-              <div class="group">
-              <div class="name-text">
-                  Иванова Галина Сергеевна
-              </div>
-              <div class="prof">
-                  д.т.н. Информатика доктор
-              </div>
-              </div>
-          </span>
-          <span class="container-teach">
-              <div class="image"></div>
-              <div class="group">
-              <div class="name-text">
-                  Иванова Галина Сергеевна
-              </div>
-              <div class="prof">
-                  д.т.н. Информатика доктор
-              </div>
-              </div>
-          </span>
-          <span class="container-teach">
-              <div class="image"></div>
-              <div class="group">
-              <div class="name-text">
-                  Иванова Галина Сергеевна
-              </div>
-              <div class="prof">
-                  д.т.н. Информатика доктор
-              </div>
-              </div>
-          </span>
-          <span class="container-teach">
-              <div class="image"></div>
-              <div class="group">
-              <div class="name-text">
-                  Иванова Галина Сергеевна
-              </div>
-              <div class="prof">
-                  д.т.н. Информатика доктор
-              </div>
-              </div>
-          </span>
-          <span class="container-teach">
-              <div class="image"></div>
-              <div class="group">
-              <div class="name-text">
-                  Иванова Галина Сергеевна
-              </div>
-              <div class="prof">
-                  д.т.н. Информатика доктор
-              </div>
-              </div>
-          </span>
-      </div>
+    <div class="content">
+        <div class="sections-teach">
+            <% @teachers.each do |teacher| %>
+                <span class="container-teach">
+                    <div class="image">
+                        <% if teacher.image.attached? %>
+                            <%= link_to(image_tag(teacher.image, width: 238, height: 300), teacher.image) %> 
+                        <% else %>
+                            <%= image_tag('content/historyIU6.jpg', width: 238, height: 300) %>
+                        <% end %>
+                    </div>
+                    <div class="group">
+                        <div class="name-text">
+                            <%= teacher.fio %>
+                        </div>
+                        <div class="prof">
+                            <%= teacher.job_title %>
+                        </div>
+                    </div>
+                </span>
+            <% end %>
+        </div>
     </div>
 
 

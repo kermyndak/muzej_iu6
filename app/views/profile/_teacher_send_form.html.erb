@@ -1,0 +1,23 @@
+<%= form_with url: '/profile/create_teacher', id: 'teacher_send_form', method: :put do |form| %>
+    <div>
+        <%= form.label :fio %>
+        <%= form.text_area :fio, id: 'message-area' %>
+    </div>
+
+    <div>
+        <%= form.label :job_title %>
+        <%= form.text_area :job_title %>
+    </div>
+
+    <div>
+        <%= form.label :additional_information %>
+        <%= form.text_area :additional_information %>
+    </div>
+
+    <div>
+        <%= form.label :image %>
+        <%= form.file_field :image %>
+    </div>
+
+    <%= form.submit 'Save', id: 'save-btn' %>
+<% end %>

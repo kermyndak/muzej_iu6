@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   before_action :check_session
-  before_action :check_admin, only: %i[admin_profile set_admin edit add_teacher create_teacher]
+  before_action :check_admin, only: %i[admin_profile set_admin edit add_teacher create_teacher update_teacher edit_teacher list_teachers]
   before_action :get_user_id, only: %i[set_admin edit change update confirm_destroy destroy cancel_destroy]
   before_action :check_id, only: %i[change update confirm_destroy]
   def admin_profile
@@ -71,6 +71,25 @@ class ProfileController < ApplicationController
   def create_teacher
     teacher = Teacher.new(teacher_params)
     teacher.save!
+    render turbo_stream: turbo_stream.replace('teacher_send_form', partial: 'teacher_send_form')
+  end
+
+  def edit_teacher
+    @teacher = Teacher.find(params[:id])
+  end
+
+  def update_teacher
+    teacher = Teacher.find(params[:id])
+    teacher.image.delete
+    teacher.delete
+    teacher = Teacher.new(teacher_params)
+    teacher.id = params[:id]
+    teacher.save
+    redirect_to '/profile/list_teachers'
+  end
+
+  def list_teachers
+    @teachers = Teacher.all
   end
 
   private
