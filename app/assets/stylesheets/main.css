@@ -167,7 +167,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     /* width: 1820px; */
-    padding: 80px 50px;
+    padding: 50px 50px 80px;
     justify-content: center;
     /* align-items: flex-start; */
     gap: 50px 100px;
