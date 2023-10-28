@@ -9,6 +9,8 @@ Rails.application.routes.draw do
   get 'profile/admin_profile'
   get 'profile/profile'
   get 'profile/edit/:id', to: 'profile#edit'
+  get 'profile/add_teacher'
+  post 'profile/create_teacher'
   put 'profile/set_admin/:id', to: 'profile#set_admin'
   get 'request/admin'
   get 'request/already_read'

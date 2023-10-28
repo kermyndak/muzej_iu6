@@ -1,6 +1,6 @@
 class ProfileController < ApplicationController
   before_action :check_session
-  before_action :check_admin, only: %i[admin_profile set_admin edit]
+  before_action :check_admin, only: %i[admin_profile set_admin edit add_teacher create_teacher]
   before_action :get_user_id, only: %i[set_admin edit change update confirm_destroy destroy cancel_destroy]
   before_action :check_id, only: %i[change update confirm_destroy]
   def admin_profile
@@ -65,6 +65,14 @@ class ProfileController < ApplicationController
   def profile
   end
 
+  def add_teacher
+  end
+
+  def create_teacher
+    teacher = Teacher.new(teacher_params)
+    teacher.save!
+  end
+
   private
   def check_admin
     if current_user.role != 'admin'
@@ -76,6 +84,10 @@ class ProfileController < ApplicationController
     if current_user.role != 'admin' && current_user.id != @user_id
       redirect_to root_path
     end
+  end
+
+  def teacher_params
+    params.permit(:fio, :job_title, :additional_information, :image)
   end
 
   def get_edit_params
