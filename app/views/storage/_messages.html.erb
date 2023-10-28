@@ -1,0 +1,13 @@
+<h1>Messages</h1>
+<% @requests.each do |request| %>
+  <% unless request.links.empty? %>
+    <h3>
+      User: <%= User.find(request.user_id).name %>
+    </h3>
+    <h3>
+        Date: <%= request.created_at %>
+    </h3>
+    Message: <%= request.message %>
+    <hr>
+  <% end %>
+<% end %>

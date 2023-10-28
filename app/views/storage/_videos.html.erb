@@ -1,0 +1,14 @@
+<h1>Videos</h1>
+<% @requests.each do |request| %>
+  <% unless request.links.empty? %>
+    <h3>
+      User: <%= User.find(request.user_id).name %>
+    </h3>
+    <% request.links.each do |link| %>
+      <% if link.include? 'youtube.com' %>
+        <iframe width="660" height="415" src="<%= link %>" title="" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe> 
+      <% end %>
+    <% end %>
+    <hr>
+  <% end %>
+<% end %>

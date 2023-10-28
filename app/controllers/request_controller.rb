@@ -1,7 +1,7 @@
 class RequestController < ApplicationController
   before_action :check_session
   before_action :check_admin, only: %i[admin read already_read add_files]
-  before_action :get_request_id, only: %i[read]
+  before_action :get_request_id, only: %i[read change_request change]
   before_action :check_id, only: %i[]
   before_action :read_param, only: :read
 
@@ -41,6 +41,24 @@ class RequestController < ApplicationController
   end
 
   def add_files
+    request = Request.find(@request_id)
+    parameters = request_params
+    request.update_column(:message, parameters[:message])
+    request.update_column(:images, parameters[:images])
+    request.update_column(:some_files, parameters[:some_files])
+    request.parse(params[:links])
+    request.save!
+  end
+
+  def change_request
+    @request = Request.find(params[:id])
+  end
+
+  def user_requests
+    @requests = Request.all.where(user_id: current_user.id)
+  end
+
+  def change
   end
 
   private
@@ -51,7 +69,7 @@ class RequestController < ApplicationController
   end
 
   def get_request_id
-    @request_id = params[:id].to_i
+    @request_id = params[:id]
   end
 
   def read_param

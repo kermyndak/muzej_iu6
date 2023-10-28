@@ -15,6 +15,9 @@ class Request < ApplicationRecord
 
     private
     def check_string(links_of_request)
+        if links_of_request.empty?
+            return false
+        end
         a = links_of_request.split("\r\n").map { |string| string.split(', ') }
                                           .map { |string| string.map { |string| string.split } }
                                           .reduce(:+).reduce(:+)

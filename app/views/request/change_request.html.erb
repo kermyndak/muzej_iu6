@@ -1,0 +1,47 @@
+<h2>Change request</h2>
+
+<div id="save-slider" class="slider">
+    <div class="slider__text-container">
+        Ваш файл успешно сохранён
+    </div>
+    <div id='close-btn' class="cross-container">
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" fill="none">
+            <g clip-path="url(#clip0_277_369)">
+            <path d="M15.2929 16.7071C15.6834 17.0976 16.3166 17.0976 16.7071 16.7071C17.0976 16.3166 17.0976 15.6834 16.7071 15.2929L15.2929 16.7071ZM-0.707107 0.707107L15.2929 16.7071L16.7071 15.2929L0.707107 -0.707107L-0.707107 0.707107Z" fill="#002367"/>
+            <path d="M-0.707107 15.2929C-1.09763 15.6834 -1.09763 16.3166 -0.707107 16.7071C-0.316582 17.0976 0.316582 17.0976 0.707107 16.7071L-0.707107 15.2929ZM15.2929 -0.707107L-0.707107 15.2929L0.707107 16.7071L16.7071 0.707107L15.2929 -0.707107Z" fill="#002367"/>
+            </g>
+            <defs>
+                <clipPath id="clip0_277_369">
+                    <rect width="16" height="16" fill="white"/>
+                </clipPath>
+            </defs>
+        </svg>
+    </div>
+</div>
+
+<%= form_with url: "/request/change/#{@request_id}", method: :post do |form| %>
+    <div>
+        <%= form.label :message, value: "#{@request.message}" %>
+        <%= form.text_area :message, id: 'message-area' %>
+    </div>
+
+    <div>
+        <%= form.label :images %>
+        <%= form.file_field :images, multiple: true %>
+    </div>
+
+    <div>
+        <%= form.label :some_files %>
+        <%= form.file_field :some_files, multiple: true %>
+    </div>
+
+    <div>
+        <%= form.label :links %>
+        <%= form.text_area :links, id: 'links-area' %>
+    </div>
+
+    <%= form.submit 'Save', id: 'save-btn' %>
+<% end %>
+
+<%= link_to 'Back', '/' %>
+<%= javascript_include_tag 'slider_on_save_button' %>

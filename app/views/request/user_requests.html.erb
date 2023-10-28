@@ -1,0 +1,38 @@
+<h1>My requests</h1>
+<% @requests.each do |request| %>
+    Date: <%= request.created_at %>
+    <br>
+    <% unless request.message.empty? %>
+        Message: <%= request.message %>  
+        <br>
+    <% end %>
+    <% unless request.images.empty?  %>
+        <% request.images.each do |image| %>
+            <%= link_to(image_tag(image, class: 'storage_images'), image) %>
+        <% end %>
+        <br>
+    <% end %>
+    <% unless request.some_files.empty? %>
+        <% request.some_files.each do |file| %>
+            <%= link_to(file) %>
+        <% end %>
+        <br>
+    <% end %>
+    <% unless request.links.empty? %>
+        <% request.links.each do |link| %>
+            <%= link_to(link, link) %>
+        <% end %>
+    <% end %>
+    <br>
+    <%= link_to 'change this request', "/request/change_request/#{request.id}" %>
+    <hr>
+<% end %>
+
+<%= link_to 'Back', '/' %>
+
+<style>
+  .storage_images {
+    width: 300px;
+    height: 300px;
+  }
+</style>

@@ -1,0 +1,5 @@
+<h1>Other files</h1>
+<% ActiveStorage::Blob.all.select { |f| !f.image? && f.success }.each do |file| %> 
+  <%= link_to(file) %>
+  <hr>
+<% end %>

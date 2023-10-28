@@ -1,0 +1,12 @@
+<h1>Images</h1>
+<% ActiveStorage::Blob.all.select { |f| f.image? && f.success }.each do |image| %> 
+  <%= link_to(image_tag(image, class: 'storage_images'), image) %>
+  <hr>
+<% end %>
+
+<style>
+  .storage_images {
+    width: 300px;
+    height: 300px;
+  }
+</style>
