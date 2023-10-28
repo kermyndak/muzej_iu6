@@ -47,15 +47,15 @@
         <div class="field">
           <%= f.password_field :password_confirmation, placeholder: "Подтверждение пароля", autocomplete: "new-password" %>
         </div>
-    </div>
-
-    <div class="group-form">
-    <%= render "devise/shared/links" %>
-    </div>
+        </div>
+        
+        <div class="group-form">
+        <%= render "devise/shared/links" %>
+        </div>
+        <div class="button">
+        <%= f.submit "Зарегистрироваться", class: "button" %>
+        </div>
+      <% end %>
   </div>
-    <div class="button">
-    <%= f.submit "Зарегистрироваться", class: "button" %>
-    </div>
-  <% end %>
 </div>
   
