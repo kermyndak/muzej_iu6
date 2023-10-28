@@ -185,7 +185,7 @@ box-shadow: 0 2px 66px var(--shadowHeaderColor);
 
 border-radius: 15px;
 
-background-image: url("./../images/content/historyIU6.jpg");
+background-image: url("content/historyIU6.jpg");
 
 object-fit: cover;
 
