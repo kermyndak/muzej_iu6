@@ -38,7 +38,6 @@ class RequestController < ApplicationController
     @request.parse(params[:links])
     @request.save!
     render turbo_stream: turbo_stream.replace('send_form', partial: 'create')
-    # render partial: 'create'
   end
 
   def add_files
