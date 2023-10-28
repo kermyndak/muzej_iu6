@@ -104,7 +104,7 @@ header {
     justify-content: center;
     align-items: center;
     background: radial-gradient(50% 50% at 50% 50%, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.06) 0.46%, rgba(0, 0, 0, 0.30) 100%), lightgray -0.309px 0px / 100.032% 187.613% no-repeat;
-    background-image: url("./../images/header/font_BMSTU.jpg");
+    background-image: url("header/font_BMSTU.jpg");
     background-size: cover;
     background-position: center;
     color: white;
