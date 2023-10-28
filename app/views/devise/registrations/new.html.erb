@@ -15,32 +15,26 @@
   <%= render "devise/shared/error_messages", resource: resource %>
 
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, placeholder: "Почта", autofocus: true, autocomplete: "email" %>
   </div>
 
   <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name, autocomplete: "name" %>
+    <%= f.text_field :name, placeholder: "Имя", autocomplete: "name" %>
   </div>
 
   <div class="field">
-    <%= f.label :surname %><br />
-    <%= f.text_field :surname, autocomplete: "surname" %>
+    <%= f.text_field :surname, placeholder: "Фамилия", autocomplete: "surname" %>
   </div>
 
   <div class="field">
-    <%= f.label :middle_name %><br />
-    <%= f.text_field :middle_name, autocomplete: "middle_name" %>
+    <%= f.text_field :middle_name, placeholder: "Отчество", autocomplete: "middle_name" %>
   </div>
 
   <div class="field">
-    <%= f.label :year %><br />
-    <%= f.text_field :year, autocomplete: "year" %>
+    <%= f.text_field :year, placeholder: "Год выпуска", autocomplete: "year" %>
   </div>
 
   <div class="field">
-    # <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
@@ -48,16 +42,16 @@
   </div>
 
   <div class="field">
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    <%= f.password_field :password_confirmation, placeholder: "Подтверждение пароля", autocomplete: "new-password" %>
   </div>
 
   <div class="group-form">
   <%= render "devise/shared/links" %>
   </div>
-
-  <div class="button"> #actions
-    <%= f.submit "Зарегестрироваться" %>
+  
+  <div class="button">
+  <%= f.submit "Зарегестрироваться" %>
   </div>
   <% end %>
-</div>
+  </div>
+  
