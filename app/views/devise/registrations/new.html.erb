@@ -1,4 +1,15 @@
-<h2>Sign up</h2>
+<div class="block">
+  <div class="img">
+      <img src="./images/logo.png" alt="logo">
+  </div>
+  <div class="group-form">
+    <div class="text-title">
+        Создание учетной записи
+    </div>
+    <div class="text">
+    для пользователей, не имеющих корпоративную почту МГТУ им. Н.Э. Баумана
+    </div>
+  </div>
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
@@ -29,11 +40,11 @@
   </div>
 
   <div class="field">
-    <%= f.label :password %>
+    # <%= f.label :password %>
     <% if @minimum_password_length %>
     <em>(<%= @minimum_password_length %> characters minimum)</em>
     <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
+    <%= f.password_field :password, placeholder: "Пароль", autocomplete: "new-password" %>
   </div>
 
   <div class="field">
@@ -41,9 +52,12 @@
     <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up" %>
+  <div class="group-form">
+  <%= render "devise/shared/links" %>
   </div>
-<% end %>
 
-<%= render "devise/shared/links" %>
+  <div class="button"> #actions
+    <%= f.submit "Зарегестрироваться" %>
+  </div>
+  <% end %>
+</div>
