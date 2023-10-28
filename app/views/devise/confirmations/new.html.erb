@@ -14,12 +14,14 @@
         <%= render "devise/shared/error_messages", resource: resource %>
 
         <div class="field">
-          <%= f.label :email %><br />
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
+          <%= f.email_field :email, placeholder: "Email", autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email) %>
         </div>
-        <%= render "devise/shared/links" %>
 
-        <div class="actions">
+        <div class="group-form">
+        <%= render "devise/shared/links" %>
+        </div>
+
+        <div class="button">
           <%= f.submit "Отправить" %>
         </div>
       <% end %>
