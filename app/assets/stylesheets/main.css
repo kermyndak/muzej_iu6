@@ -151,7 +151,8 @@ header {
     align-items: center;
     gap: 10px;
     border-radius: 20px;
-    border-color: #000;
+    
+    background: white;
 
     /* -webkit-text-fill-color: aliceblue; */
     border: none;
@@ -165,23 +166,26 @@ border: 1px solid var(--grey, #C4C4C4);
 
 }
 
+.dir {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.blue {
+    background-color: #18305E;
+    color: #fff;
+}
+
 
 /* Content */
 
 .content {
-    /* margin: 0px 80px; */
-    /* margin-right: 120px; */
-    /* max-width: 1820px; */
-    /* background-color: aqua; */
     display: flex;
-    /* margin-left: auto; */
-    /* margin-right: auto; */
     justify-content: center;
     flex-wrap: wrap;
-    /* justify-items: flex-start; */
     flex-direction: row;
     align-items: flex-start;
-    margin-bottom: 60px;
+    padding-bottom: 60px;
 }
 
 .sections {

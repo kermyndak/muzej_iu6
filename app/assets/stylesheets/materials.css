@@ -14,6 +14,7 @@ stroke: var(--dark-text, #18305E); */
     gap: 40px;
     border-radius: 20px;
     background: #FFF;
+    min-width: 160px;
     max-width: 300px;
 
 /* тень */
