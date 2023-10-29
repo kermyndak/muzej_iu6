@@ -340,3 +340,7 @@ h1 {
         background-attachment: fixed;
         background-size: cover;
     }
+
+    .back{
+        width: 410px;
+    }
