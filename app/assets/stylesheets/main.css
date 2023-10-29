@@ -187,7 +187,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     /* width: 1820px; */
-    padding: 10px 50px 80px;
+    padding: 30px 50px 80px;
     justify-content: center;
     /* align-items: flex-start; */
     gap: 30px;
@@ -211,7 +211,7 @@ object-fit: cover;
 
 /* max-width: 350px; */
 
-object-fit: contain;
+object-fit: cover;
 
 width: 100%;
 
