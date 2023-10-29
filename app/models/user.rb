@@ -66,4 +66,20 @@ class User < ApplicationRecord
       message: "Incorrect role"
     }
   }
+
+  def change_password(user_params)
+    current_password = user_params.delete(:current_password)
+
+    if self.valid_password?(current_password)
+      if self.update(user_params)
+        true
+      else
+        self.valid?
+        false
+      end      
+    else
+      self.errors.add(:current_password, current_password.blank? ? :blank : :invalid, message: 'Текущий пароль другой')
+      false
+    end
+  end
 end

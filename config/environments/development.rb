@@ -6,7 +6,7 @@ Rails.application.configure do
   # In the development environment your application's code is reloaded any time
   # it changes. This slows down response time but is perfect for development
   # since you don't have to restart the web server when you make code changes.
-  config.cache_classes = false
+  config.cache_classes = true
 
   config.active_storage.variant_processor = :mini_magick
 
@@ -79,6 +79,9 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
+
+  config.action_controller.page_cache_directory = Rails.root.join("public", "cached_pages")
+
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
