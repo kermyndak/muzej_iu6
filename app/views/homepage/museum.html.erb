@@ -15,11 +15,11 @@
         <h1 class="small-title">
         Гимн студентов МВТУ им. Н.Э. Баумана
         </h1>
+        <div class="sections">
+            <iframe width="660" height="415" src="https://www.youtube.com/embed/WdJk7p7GOWc?si=90ckMZGGBIeyApc4" title="Гимн студентов МВТУ им. Баумана" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
     </div>
         
-  <div class="sections">
-      <iframe width="660" height="415" src="https://www.youtube.com/embed/WdJk7p7GOWc?si=90ckMZGGBIeyApc4" title="Гимн студентов МВТУ им. Баумана" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
 
 
   <div class="searcher">
@@ -30,13 +30,13 @@
 
     <div class="sections">
                 <div>
-                <%= image_tag('4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg', alt: 'history', class: 'image') %>
+                <%= link_to(image_tag('4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg', alt: 'history', class: 'image'), '4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg' ) %>
                 </div>
                 <div>
-                <%= image_tag('28fe52c7-ffed-4722-943d-c49b001ef6da.jpg', alt: 'history', class: 'image') %>
+                <%= link_to(image_tag('28fe52c7-ffed-4722-943d-c49b001ef6da.jpg', alt: 'history', class: 'image'), '28fe52c7-ffed-4722-943d-c49b001ef6da.jpg' )%>
             </div>
             <div>
-            <%= image_tag('f0535455-a4a3-48af-a492-47edcb603dc6.jpg', alt: 'history', class: 'image') %>
+            <%= link_to(image_tag('f0535455-a4a3-48af-a492-47edcb603dc6.jpg', alt: 'history', class: 'image'), 'f0535455-a4a3-48af-a492-47edcb603dc6.jpg' ) %>
             </div>
     </div>
   </div>
@@ -52,7 +52,7 @@
     </h2>
         <div class="sections">
             <div>
-            <%= image_tag('Выпуск_2006/IMG_0637.jpg', alt: 'Выпуск 2006', class: 'image') %>
+            <%= link_to(image_tag('Выпуск_2006/IMG_0637.jpg', alt: 'Выпуск 2006', class: 'image'), 'Выпуск_2006/IMG_0637.jpg' ) %>
             </div>
             <div>
             <%= image_tag('Выпуск_2006/IMG_0623.jpg', alt: 'Выпуск 2006', class: 'image') %>
