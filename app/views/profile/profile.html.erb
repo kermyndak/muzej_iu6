@@ -37,7 +37,7 @@
         </div>
     </p>
     <%= turbo_frame_tag 'name' do %>
-        <%= link_to(image_tag(edit_icon.png), "/profile/change/#{current_user.id}", class: "button-white" %>
+        <%= link_to 'Изменить', "/profile/change/#{current_user.id}", class: "button-white" %>
     <% end %>
 </div>
 <div class="surname">

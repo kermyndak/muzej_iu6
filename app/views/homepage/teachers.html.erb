@@ -17,11 +17,11 @@
         <div class="sections-teach">
             <% @teachers.each do |teacher| %>
                 <span class="container-teach">
-                    <div class="image">
+                    <div class="i">
                         <% if teacher.image.attached? %>
-                            <%= link_to(image_tag(teacher.image, width: 238, height: 300), teacher.image) %> 
+                            <%= link_to(image_tag(teacher.image, class: "image"), teacher.image) %> 
                         <% else %>
-                            <%= image_tag('content/historyIU6.jpg', width: 238, height: 300) %>
+                            <%= image_tag('content/historyIU6.jpg', class: "image") %>
                         <% end %>
                     </div>
                     <div class="group">
