@@ -1,26 +1,17 @@
-<h1>Edit user</h1>
-      <div class="searcher">
+    <div class="searcher">
         <p class="title">
-          Имя Преподаватели
+          Профиль
         </p>
-        </div>
+    </div>
 <div class="section-prof">
       <div class="wrap">
-        <div class="pic-wrap">
-          <div class="req">
-              <img class="in-im" src="./images/content/historyIU6.jpg" alt="logo">
-          </div>
-        </div>
         <div class="group-name text-title">
-        <div id="current_name">
-            <%= current_user.name %> <%= current_user.surname %> 
-            <%= current_user.middle_name %>
+            <div id="current_name">
+                <%= current_user.name %> <%= current_user.surname %> 
+                <%= current_user.middle_name %>
+            </div>
         </div>
-
-        </div>
-        <div class="line">
-
-        </div>
+        <div class="line"></div>
         <div class="group">
 
           <div class="small-group">
@@ -37,7 +28,7 @@
           </div>
         </div>
       </div>
-
+</div>
 
 <div class="name">
     <p>Имя: 
@@ -46,7 +37,7 @@
         </div>
     </p>
     <%= turbo_frame_tag 'name' do %>
-        <%= link_to 'Изменить', "/profile/change/#{current_user.id}", class: "button-white" %>
+        <%= link_to(image_tag(edit_icon.png), "/profile/change/#{current_user.id}", class: "button-white" %>
     <% end %>
 </div>
 <div class="surname">

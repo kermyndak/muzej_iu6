@@ -167,15 +167,15 @@ header {
     display: flex;
     flex-wrap: wrap;
     /* width: 1820px; */
-    padding: 50px 50px 80px;
+    padding: 10px 50px 80px;
     justify-content: center;
     /* align-items: flex-start; */
-    gap: 50px 100px;
+    gap: 30px;
 }
 
 .image {
 
-height: 300px;
+height: 250px;
 
 background: #FFF;
 
