@@ -12,7 +12,7 @@
 </div>
 <div class="section-prof">
     <div class="wrap">
-        <div class="group-name text">
+        <div class="group-name div-text">
             <div class="line-name">
 
             <div id="current_name">
@@ -88,18 +88,16 @@
 
     </div>
 
-    <div class="inf-box div-text">
+    <div class="inf-box small-title">
          Загрузите свои материалы, тексты и предложения
          
          <%= link_to 'Отправить файлы', '/request/send_request', class: "button" %>
      
     </div>
     <%= button_to('Sign out', '/users/sign_out', class:"button-blue", :method => :delete) %>
-    <br>
     <%= turbo_frame_tag 'button_delete' do %>
         <%= button_to 'Удалить аккаунт', "/profile/destroy/#{current_user.id}", class: "button-red" %>
     <% end %>
-    <br>
 </div>
 
 
