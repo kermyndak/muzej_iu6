@@ -2,12 +2,10 @@
     <div class="wrap">
         <%= form_with url: '/request/create', id: 'send_form', method: :post do |form| %>
             <div class="year-group">
-                <% unless @flag %>
-                    <div>
-                        <%= form.label 'Сообщение' %>
-                        <%= form.text :message, id: 'message-area' %>
-                    </div>
-                <% end %>
+                <div>
+                    <%= form.label 'Сообщение' %>
+                    <%= form.text_area :message, id: 'message-area' %>
+                </div>
             </div>
             <div class="year-group">    
                 <div>
@@ -24,7 +22,7 @@
             <div class="year-group">
                 <div>
                     <%= form.label 'Ссылки на видео или хранилища' %>
-                    <%= form.text :links, id: 'links-area' %>
+                    <%= form.text_area :links, id: 'links-area' %>
                 </div>
             </div>
 
