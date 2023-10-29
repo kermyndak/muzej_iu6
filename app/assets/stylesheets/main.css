@@ -159,6 +159,8 @@ header {
     font-weight: 500;
     text-decoration: none;
     /* width: 100%; */
+    border-radius: 10px;
+border: 1px solid var(--grey, #C4C4C4);
 
 
 }
@@ -187,7 +189,7 @@ header {
     display: flex;
     flex-wrap: wrap;
     /* width: 1820px; */
-    padding: 10px 50px 80px;
+    padding: 30px 50px 80px;
     justify-content: center;
     /* align-items: flex-start; */
     gap: 30px;
@@ -211,7 +213,7 @@ object-fit: cover;
 
 /* max-width: 350px; */
 
-object-fit: contain;
+object-fit: cover;
 
 width: 100%;
 
@@ -330,4 +332,11 @@ h1 {
 
     .logo {
         width: 62px;
+    }
+
+    .background {
+
+        background-image: url('fon2.png');
+        background-attachment: fixed;
+        background-size: cover;
     }

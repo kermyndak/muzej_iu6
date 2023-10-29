@@ -15,20 +15,15 @@
         <li>
             <%= link_to 'All teachers', '/profile/list_teachers' %>
         </li>
-    <% end %>
-    <li>
-        <%= link_to 'send request', '/request/send_request' %>
-    </li>
-    <li>
+        <li>
+            <%= link_to 'storage', '/storage/index' %>
+        </li>
+        <% end %>
+        
+        <li>
         <%= link_to 'my profile', '/profile/profile' %>
-    </li>
-    <li>
-        <%= link_to 'storage', '/storage/index' %>
-    </li>
-    <li>
-        <%= button_to('Sign out', '/users/sign_out', :method => :delete) %>
-    </li>
-    <li>
-        <%= link_to 'ᐱ', '/homepage/exit_profile_list' %>
-    </li>
+        </li>
+        <li>
+            <%= link_to 'ᐱ', '/homepage/exit_profile_list' %>
+        </li>
 </ul>
