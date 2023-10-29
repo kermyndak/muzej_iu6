@@ -95,7 +95,9 @@
      
     </div>
     <% if current_user.role == 'admin' %>
+    <div id="profile">
     <%= link_to 'редактировать', '/homepage/profile_list', class: 'button-white' %>
+    </div>
     <% end %>
 
     <%= button_to('Выйти', '/users/sign_out', class:"button-blue", :method => :delete) %>
