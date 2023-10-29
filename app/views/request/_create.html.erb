@@ -1,5 +1,6 @@
+<div class="block">
 <div class="section-prof">
-    <div class="wrap">
+    <div class="small-text">
         <%= form_with url: '/request/create', id: 'send_form', method: :post do |form| %>
             <div class="year-group">
                 <div>
@@ -21,12 +22,15 @@
             </div>
             <div class="year-group">
                 <div>
-                    <%= form.label 'Ссылки на видео или хранилища' %>
-                    <%= form.text_area :links, id: 'links-area' %>
+                    <%= form.label 'Ссылка на видео или хранилища' %>
+                    <%= form.text_field :links, id: 'links-area' %>
                 </div>
             </div>
-
-            <%= form.submit 'Save', id: 'save-btn', class: 'button' %>
+            <div class="small-text">
+                Отправляя материалы, вы соглашаетесь с обработкой персональных данных
+            </div>
+            <%= form.submit 'Отправить', id: 'save-btn', class: 'button' %>
         <% end %>
     </div>
+</div>
 </div>
