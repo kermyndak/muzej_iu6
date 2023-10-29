@@ -1,4 +1,35 @@
-<h1>Edit user</h1>
+    <div class="searcher">
+        <p class="title">
+          Профиль
+        </p>
+    </div>
+<div class="section-prof">
+      <div class="wrap">
+        <div class="group-name text-title">
+            <div id="current_name">
+                <%= current_user.name %> <%= current_user.surname %> 
+                <%= current_user.middle_name %>
+            </div>
+        </div>
+        <div class="line"></div>
+        <div class="group">
+
+          <div class="small-group">
+            <div class="text">
+              Должность
+            </div>
+            <input type="text" placeholder="Почта" autofocus/>
+          </div>
+          <div class="small-group">
+            <div class="text">
+              Должность
+            </div>
+            <input type="text" placeholder="Почта" autofocus/>
+          </div>
+        </div>
+      </div>
+</div>
+
 <div class="name">
     <p>Имя: 
         <div id="current_name">
@@ -6,7 +37,7 @@
         </div>
     </p>
     <%= turbo_frame_tag 'name' do %>
-        <%= link_to 'Изменить', "/profile/change/#{current_user.id}" %>
+        <%= link_to 'Изменить', "/profile/change/#{current_user.id}", class: "button-white" %>
     <% end %>
 </div>
 <div class="surname">
@@ -16,7 +47,7 @@
         </div>  
     </p>
     <%= turbo_frame_tag 'surname' do %>
-        <%= link_to 'Изменить', "/profile/change/#{current_user.id}" %>
+        <%= link_to 'Изменить', "/profile/change/#{current_user.id}", class: "button-white" %>
     <% end %>
 </div>
 <div class="middle_name">
@@ -26,7 +57,7 @@
         </div>        
     </p>
     <%= turbo_frame_tag 'middle_name' do %>
-        <%= link_to 'Изменить', "/profile/change/#{current_user.id}" %>
+        <%= link_to 'Изменить', "/profile/change/#{current_user.id}", class: "button-white" %>
     <% end %>
 </div>
 <div class="year">
@@ -36,12 +67,12 @@
         </div>
     </p>
     <%= turbo_frame_tag 'year' do %>
-        <%= link_to 'Изменить', "/profile/change/#{current_user.id}" %>
+        <%= link_to 'Изменить', "/profile/change/#{current_user.id}", class: "button-white" %>
     <% end %>
 </div>
 <br>
 <%= turbo_frame_tag 'button_delete' do %>
-    <%= button_to 'Удалить аккаунт', "/profile/destroy/#{current_user.id}" %>
+    <%= button_to 'Удалить аккаунт', "/profile/destroy/#{current_user.id}", class: "button-white" %>
 <% end %>
 <br>
 <%= link_to 'Back', root_path %>

@@ -1,5 +1,5 @@
 <%= turbo_stream.update 'year' do %>
-    <%= link_to 'Изменить', "/profile/change/#{@user_id}" %>
+    <%= link_to 'Изменить', "/profile/change/#{@user_id}", class: "button" %>
 <% end %>
 <%= turbo_stream.update 'current_year' do %>
     <%= User.find(@user_id).year %>

@@ -1,57 +1,127 @@
-<div class="searcher">
-      <h1 class="title">
-        Гимн студентов МВТУ им. Н.Э. Баумана
-      </h1>
-      
-    </div>
-<div class="content">
-  <div class="sections">
-      <iframe width="660" height="415" src="https://www.youtube.com/embed/WdJk7p7GOWc?si=90ckMZGGBIeyApc4" title="Гимн студентов МВТУ им. Баумана" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-  </div>
-  <div class="searcher">
-  <div class="line">
-  <!-- </div> -->
-</div>
-        <h1 class="title">
-        Фотографии 
-      </h1>
-
-  <div class="sections">
-           <div>
-          <%= image_tag('4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg', alt: 'history', class: 'image') %>
-        </div>
-        <div>
-        <%= image_tag('28fe52c7-ffed-4722-943d-c49b001ef6da.jpg', alt: 'history', class: 'image') %>
-      </div>
-      <div>
-      <%= image_tag('f0535455-a4a3-48af-a492-47edcb603dc6.jpg', alt: 'history', class: 'image') %>
-    </div>
-  </div>
-  </div>
 
 <div class="searcher">
-<div class="line">
-<!-- </div> -->
-</div>
     <h1 class="title">
-    Фотографии с выпусков
-  </h1>
-
-  <h1 class="title">
-  Выпуск 2006
-</h1>
-<div class="sections">
-       <div>
-       <%= link_to image_tag('4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg', alt: 'history', class: 'image'), "/homepage/get_image/4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg" %>
-      <%= image_tag('4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg', alt: 'history', class: 'image') %>
+    Музей кафедры ИУ6
+    </h1>
+    <div class="small-text">
+    В электронном музее размещены фотографии разных лет: как студентов, так и преподавателей. Также здесь вы сможете найти устройства и элементы, которые разрабатывались на этой кафедре.
     </div>
-    <div>
-    <%= image_tag('28fe52c7-ffed-4722-943d-c49b001ef6da.jpg', alt: 'history', class: 'image') %>
+</div>
+
+
+<div class="content">
+    <div class="searcher">
+        <div class="line"></div>
+        <h1 class="small-title">
+        Гимн студентов МВТУ им. Н.Э. Баумана
+        </h1>
+        <div class="sections">
+            <iframe width="660" height="415" src="https://www.youtube.com/embed/WdJk7p7GOWc?si=90ckMZGGBIeyApc4" title="Гимн студентов МВТУ им. Баумана" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+        
+
+
+  <div class="searcher">
+    <div class="line"></div>
+        <h1 class="small-title">
+        Фотографии 
+        </h1>
+
+    <div class="sections">
+                <div>
+                <%= link_to(image_tag('4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg', alt: 'history', class: 'image'), "#{Rails.root}/app/assets/images/Выпуск_2006/IMG_0637.jpg") %>
+                </div>
+                <div>
+                <%= link_to(image_tag('28fe52c7-ffed-4722-943d-c49b001ef6da.jpg', alt: 'history', class: 'image'), "#{Rails.root}/app/assets/images/28fe52c7-ffed-4722-943d-c49b001ef6da.jpg")%>
+            </div>
+            <div>
+            <%= link_to(image_tag('f0535455-a4a3-48af-a492-47edcb603dc6.jpg', alt: 'history', class: 'image')) %>
+            </div>
+    </div>
   </div>
-  <div>
-  <%= image_tag('f0535455-a4a3-48af-a492-47edcb603dc6.jpg', alt: 'history', class: 'image') %>
-</div>
-</div>
-</div>
+
+    <div class="searcher">
+        <div class="line"></div>
+        <h1 class="small-title">
+        Фотографии с выпусков
+    </h1>
+
+    <h2 class="xs-title">
+    Выпуск 2006
+    </h2>
+        <div class="sections">
+            <div>
+             <%= link_to image_tag('4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg', alt: 'history', class: 'image'), "/homepage/get_image/4f058e6d-f759-4c55-8caa-2fa98a21f72f.jpg" %>
+      <%= link_to(image_tag('Выпуск_2006/IMG_0637.jpg', alt: 'Выпуск 2006', class: 'image')) %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2006/IMG_0623.jpg', alt: 'Выпуск 2006', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2006/IMG_0638.jpg', alt: 'Выпуск 2006', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2006/IMG_0545.jpg', alt: 'Выпуск 2006', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2006/IMG_0578.jpg', alt: 'Выпуск 2006', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2006/IMG_0619.jpg', alt: 'Выпуск 2006', class: 'image') %>
+            </div>
+        </div> 
+    </div>
+
+    <div class="searcher">
+
+    <h2 class="xs-title">
+    Выпуск 2008
+    </h2>
+        <div class="sections">
+            <div>
+            <%= image_tag('Выпуск_2008/009.jpg', alt: 'Выпуск 2008', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2008/010.jpg', alt: 'Выпуск 2008', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2008/011.jpg', alt: 'Выпуск 2008', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2008/012.jpg', alt: 'Выпуск 2008', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2008/048.jpg', alt: 'Выпуск 2008', class: 'image') %>
+            </div>
+        </div> 
+    </div>
+
+    <div class="searcher">
+    
+        <h2 class="xs-title">
+        Выпуск 2009
+        </h2>
+        <div class="sections">
+            <div>
+            <%= image_tag('Выпуск_2009/001.JPG', alt: 'Выпуск 2009', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2009/002.JPG', alt: 'Выпуск 2009', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2009/003.JPG', alt: 'Выпуск 2009', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2009/004.JPG', alt: 'Выпуск 2009', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2009/005.JPG', alt: 'Выпуск 2009', class: 'image') %>
+            </div>
+            <div>
+            <%= image_tag('Выпуск_2009/007.JPG', alt: 'Выпуск 2009', class: 'image') %>
+            </div>
+        </div> 
+    </div>
 
 </div>
