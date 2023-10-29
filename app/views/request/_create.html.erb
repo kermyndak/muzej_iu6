@@ -1,23 +1,33 @@
-<%= form_with url: '/request/create', id: 'send_form', method: :post do |form| %>
-    <div>
-        <%= form.label :message %>
-        <%= form.text_area :message, id: 'message-area' %>
-    </div>
+<div class="section-prof">
+    <div class="wrap">
 
-    <div>
-        <%= form.label :images %>
-        <%= form.file_field :images, multiple: true %>
-    </div>
+        <%= form_with url: '/request/create', id: 'send_form', method: :post do |form| %>
+            <div class="year-group">
+                <div>
+                    <%= form.label 'Введите текст' %>
+                    <%= form.text_area :message, id: 'message-area' %>
+                </div>
+            </div>
+            <div class="year-group">
+                <div>
+                    <%= form.label :images %>
+                    <%= form.file_field :images, multiple: true %>
+                </div>
+            </div>
+            <div class="year-group">
+                <div>
+                    <%= form.label :some_files %>
+                    <%= form.file_field :some_files, multiple: true %>
+                </div>
+            </div>
+            <div class="year-group">
+                <div>
+                    <%= form.label :links %>
+                    <%= form.text_area :links, id: 'links-area' %>
+                </div>
+            </div>
 
-    <div>
-        <%= form.label :some_files %>
-        <%= form.file_field :some_files, multiple: true %>
+            <%= form.submit 'Save', id: 'save-btn' %>
+        <% end %>
     </div>
-
-    <div>
-        <%= form.label :links %>
-        <%= form.text_area :links, id: 'links-area' %>
-    </div>
-
-    <%= form.submit 'Save', id: 'save-btn' %>
-<% end %>
+</div>
