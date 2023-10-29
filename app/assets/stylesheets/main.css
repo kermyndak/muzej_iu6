@@ -333,3 +333,10 @@ h1 {
     .logo {
         width: 62px;
     }
+
+    .background {
+
+        background-image: url('./../images/fon2.png');
+        background-attachment: fixed;
+        background-size: cover;
+    }
