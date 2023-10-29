@@ -1,8 +1,8 @@
 class ProfileController < ApplicationController
   before_action :check_session
   before_action :check_admin, only: %i[admin_profile set_admin edit add_teacher create_teacher update_teacher edit_teacher list_teachers]
-  before_action :get_user_id, only: %i[set_admin edit change update confirm_destroy destroy cancel_destroy]
-  before_action :check_id, only: %i[change update confirm_destroy]
+  before_action :get_user_id, only: %i[set_admin edit change update confirm_destroy destroy cancel_destroy change_password]
+  before_action :check_id, only: %i[change update confirm_destroy change_password]
   def admin_profile
     @users = User.where.not(email: 'admin@admin.ru').select(&:confirmed?)
   end
@@ -90,6 +90,10 @@ class ProfileController < ApplicationController
 
   def list_teachers
     @teachers = Teacher.all.sort_by(&:fio)
+  end
+
+  def password_update
+
   end
 
   private
