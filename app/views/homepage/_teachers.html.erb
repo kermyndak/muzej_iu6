@@ -1,0 +1,19 @@
+<%= turbo_frame_tag 'teachers' do %>
+    <% @teachers.each do |teacher| %>
+        <span class="container-teach">
+            <% if teacher.image.attached? %>
+                <%= link_to(image_tag(teacher.image, class: "image"), teacher.image) %> 
+            <% else %>
+                <%= image_tag('content/historyIU6.jpg', class: "image") %>
+            <% end %>
+            <div class="group">
+                <div class="name-text">
+                    <%= teacher.fio %>
+                </div>
+                <div class="prof">
+                    <%= teacher.job_title %>
+                </div>
+            </div>
+        </span>
+    <% end %>
+<% end %>

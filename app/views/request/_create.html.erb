@@ -1,8 +1,10 @@
 <%= form_with url: '/request/create', id: 'send_form', method: :post do |form| %>
-    <div>
-        <%= form.label :message %>
-        <%= form.text_area :message, id: 'message-area' %>
-    </div>
+    <% unless @flag %>
+        <div>
+            <%= form.label :message %>
+            <%= form.text_area :message, id: 'message-area' %>
+        </div>
+    <% end %>
 
     <div>
         <%= form.label :images %>
