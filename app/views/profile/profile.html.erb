@@ -94,6 +94,10 @@
          <%= link_to 'Отправить файлы', '/request/send_request', class: "button" %>
      
     </div>
+    <% if current_user.role == 'admin' %>
+    <%= link_to 'редактировать', '/homepage/profile_list', class: 'button-white' %>
+    <% end %>
+
     <%= button_to('Выйти', '/users/sign_out', class:"button-blue", :method => :delete) %>
     <%= turbo_frame_tag 'button_delete' do %>
         <%= button_to 'Удалить аккаунт', "/profile/destroy/#{current_user.id}", class: "button-red" %>

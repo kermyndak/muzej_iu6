@@ -40,7 +40,7 @@
       <span>
         <% if user_signed_in? %>
           <div id="profile">
-            <%= link_to 'Профиль', '/homepage/profile_list' %>
+            <%= link_to 'Профиль', '/profile/profile', class: 'button-white' %>
           </div>
         <% else %>
           <%= link_to 'Войти', '/users/sign_in', class: 'button' %>
