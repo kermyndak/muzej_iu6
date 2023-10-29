@@ -321,7 +321,7 @@ h1 {
     font-family: IBM Plex Sans;
     font-size: 16px;
     /* font-style: normal; */
-    font-weight: 500;
+    font-weight: 400;
     line-height: 23px; /* 164.286% */
 }
 
@@ -392,8 +392,8 @@ textarea {
   height: 150px;
   padding: 12px 20px;
   box-sizing: border-box;
-  border: 2px solid #ccc;
+  border: 1px solid #C4C4C4;
   border-radius: 4px;
-  background-color: #f8f8f8;
+  background-color: white;
   resize: none;
 }
