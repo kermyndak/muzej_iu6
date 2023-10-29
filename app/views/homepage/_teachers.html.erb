@@ -1,4 +1,4 @@
-<%= turbo_frame_tag 'teachers' do %>
+<%= turbo_frame_tag 'teachers', class: "sections-teach" do %>
     <% @teachers.each do |teacher| %>
         <span class="container-teach">
             <% if teacher.image.attached? %>
