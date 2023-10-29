@@ -13,7 +13,12 @@ class HomepageController < ApplicationController
     else
       @teachers = Teacher.all.sort_by(&:fio)
     end
-    render partial: 'teachers'
+
+    if turbo_frame_request?
+      render partial: 'teachers'
+    else
+      render :teachers
+    end
   end
 
   def get_image
