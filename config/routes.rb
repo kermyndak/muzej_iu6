@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   get 'homepage/history'
   get 'homepage/profile_list'
   get 'homepage/exit_profile_list'
+  get 'homepage/get_image/:path', to: 'homepage#get_image'
   get 'profile/admin_profile'
   get 'profile/profile'
   get 'profile/edit/:id', to: 'profile#edit'

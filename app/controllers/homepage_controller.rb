@@ -7,6 +7,10 @@ class HomepageController < ApplicationController
   def museum
   end
 
+  def get_image
+    send_file("#{Rails.root}/app/assets/images/" + params[:path] + '.' + params[:format], disposition: 'inline')
+  end
+
   def materials
   end
 
