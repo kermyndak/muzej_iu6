@@ -1,9 +1,10 @@
+<div class="block">
 <div class="section-prof">
     <div class="wrap">
         <%= form_with url: '/request/create', id: 'send_form', method: :post do |form| %>
             <div class="year-group">
+                <%= form.label 'Сообщение' %>
                 <div>
-                    <%= form.label 'Сообщение' %>
                     <%= form.text_area :message, id: 'message-area' %>
                 </div>
             </div>
@@ -26,7 +27,8 @@
                 </div>
             </div>
 
-            <%= form.submit 'Save', id: 'save-btn', class: 'button' %>
+            <%= form.submit 'Отправить', id: 'save-btn', class: 'button' %>
         <% end %>
     </div>
+</div>
 </div>

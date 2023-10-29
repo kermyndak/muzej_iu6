@@ -94,7 +94,7 @@
          <%= link_to 'Отправить файлы', '/request/send_request', class: "button" %>
      
     </div>
-    <%= button_to('Sign out', '/users/sign_out', class:"button-blue", :method => :delete) %>
+    <%= button_to('Выйти', '/users/sign_out', class:"button-blue", :method => :delete) %>
     <%= turbo_frame_tag 'button_delete' do %>
         <%= button_to 'Удалить аккаунт', "/profile/destroy/#{current_user.id}", class: "button-red" %>
     <% end %>
