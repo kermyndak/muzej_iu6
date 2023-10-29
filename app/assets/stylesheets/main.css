@@ -144,6 +144,26 @@ header {
 
 }
 
+.button-white {
+    display: inline-flex;
+    padding: 10px 30px;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-radius: 20px;
+    border-color: #000;
+
+    /* -webkit-text-fill-color: aliceblue; */
+    border: none;
+    font-size: 16px;
+    font-weight: 500;
+    text-decoration: none;
+    /* width: 100%; */
+
+
+}
+
+
 /* Content */
 
 .content {
@@ -249,6 +269,27 @@ h1 {
     /* margin-top: 50px; */
 }
 
+.small-text {
+    color: var(--grey-text, #6D6D6D);
+    /* text-align: center; */
+
+/* small-text */
+    font-family: IBM Plex Sans;
+    font-size: 16px;
+    /* font-style: normal; */
+    font-weight: 500;
+    line-height: 23px; /* 164.286% */
+}
+
+.small-title {
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.xs-title {
+    font-size: 18px;
+    font-weight: 400;
+}
 
 .big-image {
 
