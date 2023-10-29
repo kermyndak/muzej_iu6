@@ -9,7 +9,7 @@ class HomepageController < ApplicationController
 
   def search
     if params[:query].present?
-      @teachers = Teacher.where('fio LIKE ?', "#{params[:query]}%").sort_by(&:fio)
+      @teachers = Teacher.where('LOWER(fio) LIKE LOWER(?)', "#{params[:query]}%").sort_by(&:fio)
     else
       @teachers = Teacher.all.sort_by(&:fio)
     end
