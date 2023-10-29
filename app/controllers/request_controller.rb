@@ -41,17 +41,17 @@ class RequestController < ApplicationController
   end
 
   def add_files
-    request = Request.find(@request_id)
+    @flag = true
+  end
+
+  def change_request
+    @request = Request.find(params[:id])
     parameters = request_params
     request.update_column(:message, parameters[:message])
     request.update_column(:images, parameters[:images])
     request.update_column(:some_files, parameters[:some_files])
     request.parse(params[:links])
     request.save!
-  end
-
-  def change_request
-    @request = Request.find(params[:id])
   end
 
   def user_requests

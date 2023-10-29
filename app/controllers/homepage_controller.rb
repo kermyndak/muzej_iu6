@@ -7,6 +7,20 @@ class HomepageController < ApplicationController
   def museum
   end
 
+  def search
+    if params[:query].present?
+      @teachers = Teacher.where('fio LIKE ?', "#{params[:query]}%").sort_by(&:fio)
+    else
+      @teachers = Teacher.all.sort_by(&:fio)
+    end
+
+    if turbo_frame_request?
+      render partial: 'teachers'
+    else
+      render :teachers
+    end
+  end
+
   def get_image
     send_file("#{Rails.root}/app/assets/images/" + params[:path] + '.' + params[:format], disposition: 'inline')
   end
@@ -15,7 +29,7 @@ class HomepageController < ApplicationController
   end
 
   def teachers
-    @teachers = Teacher.all
+    @teachers = Teacher.all.sort_by(&:fio)
   end
 
   def history

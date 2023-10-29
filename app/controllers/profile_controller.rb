@@ -89,7 +89,7 @@ class ProfileController < ApplicationController
   end
 
   def list_teachers
-    @teachers = Teacher.all
+    @teachers = Teacher.all.sort_by(&:fio)
   end
 
   private

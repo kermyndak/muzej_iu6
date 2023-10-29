@@ -1,6 +1,5 @@
 <div class="section-prof">
     <div class="wrap">
-
         <%= form_with url: '/request/create', id: 'send_form', method: :post do |form| %>
             <div class="year-group">
                 <div>
@@ -8,7 +7,7 @@
                     <%= form.text_area :message, id: 'message-area' %>
                 </div>
             </div>
-            <div class="year-group">
+            <div class="year-group">    
                 <div>
                     <%= form.label 'Изображения' %>
                     <%= form.file_field :images, multiple: true %>

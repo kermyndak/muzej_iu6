@@ -1,5 +1,6 @@
 class StorageController < ApplicationController
   before_action :check_session
+  before_action :check_admin, only: %i[index change]
   before_action :get_type, only: %i[change]
   def index
   end
@@ -24,5 +25,11 @@ class StorageController < ApplicationController
   private
   def get_type
     @type = params[:type]
+  end
+
+  def check_admin
+    if current_user.role != 'admin'
+      redirect_to root_path
+    end
   end
 end
