@@ -27,6 +27,7 @@ class HomepageController < ApplicationController
   end
 
   def materials
+    
   end
 
   def teachers
