@@ -1,126 +1,61 @@
-# <div class="block">
-#     <div class="img">
-#         <%= image_tag('logo.png', alt: 'logo') %>
-#     </div>
-#     <div class="group-form">
-#             <div class="text-title">
-#                 Создание учетной записи
-#             </div>
-#             <div class="text">
-#             после регистрации необходимо подтвердить почту
-#             </div>
-#     </div>
-
-#     <div class="group-form">
-#         <div class="wrapper">
-        
-#             # <%= render "devise/shared/error_messages", resource: resource %>
-#             <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
-#                 <div class="field">
-#                 <%= f.email_field :email, placeholder: "Почта", autofocus: true, autocomplete: "email" %>
-#                 </div>
-
-#                 <div class="field">
-#                 <%= f.text_field :name, placeholder: "Имя", autocomplete: "name" %>
-#                 </div>
-
-#                 <div class="field">
-#                 <%= f.text_field :surname, placeholder: "Фамилия", autocomplete: "surname" %>
-#                 </div>
-
-#                 <div class="field">
-#                 <%= f.text_field :middle_name, placeholder: "Отчество", autocomplete: "middle_name" %>
-#                 </div>
-
-#                 <div class="field">
-#                 <%= f.text_field :year, placeholder: "Год выпуска", autocomplete: "year" %>
-#                 </div>
-
-#                 <div class="field">
-#                 <% if @minimum_password_length %>
-#                     <em>(<%= @minimum_password_length %> characters minimum)</em>
-#                 <% end %>
-#                 <%= f.password_field :password, placeholder: "Пароль", autocomplete: "new-password" %>
-#                 </div>
-
-#                 <div class="field">
-#                 <%= f.password_field :password_confirmation, placeholder: "Подтверждение пароля", autocomplete: "new-password" %>
-#                 </div>
-                
-#                 <div class="group-form">
-#                 <%= render "devise/shared/links" %>
-#                 </div>
-
-#                 <div class="button">
-#                 <%= f.submit "Зарегистрироваться", class: "button" %>
-#                 </div>
-#             <% end %>
-#         </div>
-#     </div>
-# </div>
-
-
 <div class="block">
-  <div class="img">
-      <%= image_tag('logo.png', alt: 'logo') %>
-  </div>
-  <div class="group-form">
+    <div class="img">
+        <%= image_tag('logo.png', alt: 'logo') %>
+    </div>
+    <div class="group-form">
             <div class="text-title">
                 Создание учетной записи
             </div>
             <div class="text">
             после регистрации необходимо подтвердить почту
             </div>
-  </div>
-
-  <div class="group-form">
-    <div class="wrapper">
-
-    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
-
-        <div class="field">
-        <%= f.email_field :email, placeholder: "Почта", autofocus: true, autocomplete: "email" %>
-        </div>
-
-        <div class="field">
-        <%= f.text_field :name, placeholder: "Имя", autocomplete: "name" %>
-        </div>
-
-        <div class="field">
-        <%= f.text_field :surname, placeholder: "Фамилия", autocomplete: "surname" %>
-        </div>
-
-        <div class="field">
-        <%= f.text_field :middle_name, placeholder: "Отчество", autocomplete: "middle_name" %>
-        </div>
-
-        <div class="field">
-        <%= f.text_field :year, placeholder: "Год выпуска", autocomplete: "year" %>
-        </div>
-
-        <div class="field">
-        <% if @minimum_password_length %>
-            <em>(<%= @minimum_password_length %> characters minimum)</em>
-        <% end %>
-        <%= f.password_field :password, placeholder: "Пароль", autocomplete: "new-password" %>
-        </div>
-
-        <div class="field">
-        <%= f.password_field :password_confirmation, placeholder: "Подтверждение пароля", autocomplete: "new-password" %>
-        </div>
-        
-        <div class="group-form">
-        <%= render "devise/shared/links" %>
-        </div>
-
-        <div class="button">
-        <%= f.submit "Зарегистрироваться", class: "button" %>
-        </div>
-    <% end %>
-
     </div>
-    
 
+    <div class="group-form">
+        <div class="wrapper">
+        
+        <%= render "devise/shared/error_messages", resource: resource %>
+        <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+
+            <div class="field">
+            <%= f.email_field :email, placeholder: "Почта", autofocus: true, autocomplete: "email" %>
+            </div>
+
+            <div class="field">
+            <%= f.text_field :name, placeholder: "Имя", autocomplete: "name" %>
+            </div>
+
+            <div class="field">
+            <%= f.text_field :surname, placeholder: "Фамилия", autocomplete: "surname" %>
+            </div>
+
+            <div class="field">
+            <%= f.text_field :middle_name, placeholder: "Отчество", autocomplete: "middle_name" %>
+            </div>
+
+            <div class="field">
+            <%= f.text_field :year, placeholder: "Год выпуска", autocomplete: "year" %>
+            </div>
+
+            <div class="field">
+            <% if @minimum_password_length %>
+                <em>(<%= @minimum_password_length %> characters minimum)</em>
+            <% end %>
+            <%= f.password_field :password, placeholder: "Пароль", autocomplete: "new-password" %>
+            </div>
+
+            <div class="field">
+            <%= f.password_field :password_confirmation, placeholder: "Подтверждение пароля", autocomplete: "new-password" %>
+            </div>
+            
+            <div class="group-form">
+            <%= render "devise/shared/links" %>
+            </div>
+
+            <div class="button">
+            <%= f.submit "Зарегистрироваться", class: "button" %>
+            </div>
+        <% end %>
+        </div>
   </div>
 </div>
