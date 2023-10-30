@@ -82,4 +82,23 @@ class User < ApplicationRecord
       false
     end
   end
+
+  def generate_password(set=false)
+    if set
+      self.password = (1..8).map { |_| [('a'..'z').to_a[rand(28)], ('0'..'9').to_a[rand(10)], ['!', '~', '@', '#', '$', '%', '^', '&', '*'][rand(9)]][rand(3)] }.join
+      self.password_confirmation = self.password
+    else
+      (1..8).map { |_| [('a'..'z').to_a[rand(28)], ('0'..'9').to_a[rand(10)], ['!', '~', '@', '#', '$', '%', '^', '&', '*'][rand(9)]][rand(3)] }.join
+    end
+  end
+
+  def create_teacher_without_confirmation(email, name, surname, middle_name, year)
+    self.email = email
+    self.name = name
+    self.surname = surname
+    self.middle_name = middle_name
+    self.year = year
+    self.confirm
+    self.save
+  end
 end
