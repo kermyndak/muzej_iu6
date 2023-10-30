@@ -2,9 +2,9 @@
     <% @teachers.each do |teacher| %>
         <span class="container-teach">
             <% if teacher.image.attached? %>
-                <%= link_to(image_tag(teacher.image, class: "image"), teacher.image) %> 
+                <%= link_to(image_tag(teacher.image, class: "prep-image"), teacher.image) %> 
             <% else %>
-                <%= image_tag('content/historyIU6.jpg', class: "image") %>
+                <%= image_tag('content/historyIU6.jpg', class: "prep-image") %>
             <% end %>
             <div class="group">
                 <div class="name-text">
