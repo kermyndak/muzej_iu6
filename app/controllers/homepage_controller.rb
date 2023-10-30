@@ -1,5 +1,6 @@
 class HomepageController < ApplicationController
   before_action :check_session, only: %i[profile_list exit_profile_list]
+  caches_page :home, :museum, :history, :teachers, :materials
 
   def home
   end
@@ -22,7 +23,7 @@ class HomepageController < ApplicationController
   end
 
   def get_image
-    send_file("#{Rails.root}/app/assets/images/" + params[:path] + '.' + params[:format], disposition: 'inline')
+    send_file("#{Rails.root}/app/assets/images/" + params[:path].gsub('|', '/') + '.' + params[:format], disposition: 'inline')
   end
 
   def materials
