@@ -99,22 +99,22 @@
          <%= link_to 'Отправить файлы', '/request/send_request', class: "button" %>
      
     </div>
-    <div>
-    <% if current_user.role == 'admin' %>
-    <div id="profile">
-    <%= link_to 'редактировать', '/homepage/profile_list', class: 'button-white' %>
-    </div>
-    <% end %>
-    <div>
-    <%= button_to('Выйти', '/users/sign_out', class:"button-blue", :method => :delete) %>
-    </div>
+    <div class="group-name">
+        <% if current_user.role == 'admin' %>
+            <div id="profile">
+            <%= link_to 'Редактировать', '/homepage/profile_list', class: 'button-white' %>
+            </div>
+        <% end %>
+        <div>
+        <%= button_to('Выйти', '/users/sign_out', class:"button-blue", :method => :delete) %>
+        </div>
+        <div>
+        <%= turbo_frame_tag 'button_delete' do %>
+            <%= button_to 'Удалить аккаунт', "/profile/destroy/#{current_user.id}", class: "button-red" %>
+        <% end %>
+        </div>
     </div>
 
-    <div>
-    <%= turbo_frame_tag 'button_delete' do %>
-        <%= button_to 'Удалить аккаунт', "/profile/destroy/#{current_user.id}", class: "button-red" %>
-    <% end %>
-    </div>
 </div>
 
 
