@@ -42,13 +42,15 @@ body {
 }
 
 .s-text{
-color: var(--grey-text, #6D6D6D);
     /* text-align: center; */
     font-family: IBM Plex Sans;
     font-size: 16px;
     /* font-style: normal; */
     font-weight: 300;
     line-height: 23px;
+}
+.grey {
+    color: var(--grey-text, #6D6D6D);
 }
 
 .link {
