@@ -408,5 +408,22 @@ textarea {
   border: 1px solid #C4C4C4;
   border-radius: 4px;
   background-color: white;
-  resize: none;
+  resize: vertical;
+}
+
+
+.box-back{
+    display: flex;
+width: 100%;
+flex-direction: column;
+align-items: flex-start;
+gap: 10px;
+}
+.box-in{
+    display: flex;
+align-items: center;
+}
+.frame{
+    width: 30px;
+align-self: stretch;
 }
