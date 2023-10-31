@@ -23,7 +23,11 @@ class HomepageController < ApplicationController
   end
 
   def get_image
-    send_file("#{Rails.root}/app/assets/images/" + params[:path].gsub('|', '/') + '.' + params[:format], disposition: 'inline')
+    if check_path(params[:path]) && !params[:format].nil?
+      send_file("#{Rails.root}/app/assets/images/" + params[:path].gsub('|', '/') + '.' + params[:format], disposition: 'inline')
+    else
+      redirect_to root_path
+    end
   end
 
   def materials
@@ -43,5 +47,13 @@ class HomepageController < ApplicationController
 
   def exit_profile_list
     render turbo_stream: turbo_stream.update('profile', '<a href="/homepage/profile_list">Профиль</a>')
+  end
+
+  private
+  def check_path(path)
+    if path.include?('..|')
+      return false
+    end
+    true
   end
 end
