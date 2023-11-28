@@ -23,22 +23,22 @@ RSpec.describe "Homepages", type: :request do
     end
 
     it 'success GET history' do
-      get '/homepage/history'
+      get history_url
       expect(response).to have_http_status(:success)
     end
 
     it 'success GET teachers' do
-      get '/homepage/teachers'
+      get teachers_url
       expect(response).to have_http_status(:success)
     end
 
     it 'success GET museum' do
-      get '/homepage/museum'
+      get museum_url
       expect(response).to have_http_status(:success)
     end
 
     it 'success GET materials' do
-      get '/homepage/materials'
+      get materials_url
       expect(response).to have_http_status(:success)
     end
   end

@@ -22,7 +22,7 @@
 <%= form_with url: "/request/change/#{@request_id}", method: :post do |form| %>
     <div>
         <%= form.label :message, value: "#{@request.message}" %>
-        <%= form.text_area :message, id: 'message-area' %>
+        <%= form.text_area :message, value: @request.message, id: 'message-area' %>
     </div>
 
     <div>

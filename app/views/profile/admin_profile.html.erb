@@ -14,9 +14,9 @@
         <p>Роль: <div id="role_<%= user.id %>"><%= user.role %></div></p>
         <div id="set_admin_<%= user.id %>">
           <% if user.role == 'user' %>
-            <%= button_to 'Назначить администратором', "/profile/set_admin/#{ user.id }", method: :put %>
+            <%= button_to 'Назначить администратором', "/set_admin/#{ user.id }", method: :patch %>
           <% else %>
-            <%= button_to 'Сделать обычным пользователем', "/profile/set_admin/#{ user.id }", method: :put %>
+            <%= button_to 'Сделать обычным пользователем', "/set_admin/#{ user.id }", method: :patch %>
           <% end %>
         </div>
             <a href="/profile/edit/<%= user.id %>" class="btn btn-danger">Изменить данные пользователя</a>

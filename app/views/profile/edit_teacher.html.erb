@@ -1,23 +1,23 @@
 <h1>Edit teacher</h1>
-<%= form_with url: "/profile/update_teacher/#{@teacher.id}", id: 'teacher_send_form', method: :put do |form| %>
+<%= form_with url: "/update_teacher/#{@teacher.id}", id: 'teacher_send_form', method: :put do |form| %>
     <div>
         <%= form.label :fio %>
-        <%= form.text_area :fio, id: 'message-area' %>
+        <%= form.text_area :fio, id: 'message-area', value: @teacher.fio %>
     </div>
 
     <div>
         <%= form.label :job_title %>
-        <%= form.text_area :job_title %>
+        <%= form.text_area :job_title, value: @teacher.job_title %>
     </div>
 
     <div>
         <%= form.label :additional_information %>
-        <%= form.text_area :additional_information %>
+        <%= form.text_area :additional_information, value: @teacher.additional_information %>
     </div>
 
     <div>
         <%= form.label :image %>
-        <%= form.file_field :image %>
+        <%= form.file_field :image, value: @teacher.image %>
     </div>
 
     <%= form.submit 'Save', id: 'save-btn' %>

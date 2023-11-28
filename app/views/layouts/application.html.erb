@@ -24,22 +24,22 @@
       
       <div class="menu">
         <span>
-          <%= link_to('История кафедры', '/homepage/history', class: 'link') %>
+          <%= link_to('История кафедры', '/history', class: 'link') %>
         </span>
         <span>
-          <%= link_to('Преподаватели', '/homepage/teachers', class: 'link') %>
+          <%= link_to('Преподаватели', '/teachers', class: 'link') %>
         </span>
         <span>
-          <%= link_to('Музей', '/homepage/museum', class: 'link') %>
+          <%= link_to('Музей', '/museum', class: 'link') %>
         </span>
         <span>
-          <%= link_to('Материалы', '/homepage/materials', class: 'link') %>
+          <%= link_to('Материалы', '/materials', class: 'link') %>
         </span>
       </div>
 
       <span>
         <% if user_signed_in? %>
-            <%= link_to 'Профиль', '/profile/profile', class: 'button-white' %>
+            <%= link_to 'Профиль', '/profile', class: 'button-white' %>
         <% else %>
           <%= link_to 'Войти', '/users/sign_in', class: 'button' %>
         <% end %>

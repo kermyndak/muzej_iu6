@@ -1,8 +1,9 @@
 class ProfileController < ApplicationController
   before_action :check_session
   before_action :check_admin, only: %i[admin_profile set_admin edit add_teacher create_teacher update_teacher edit_teacher list_teachers]
-  before_action :get_user_id, only: %i[set_admin edit change update confirm_destroy destroy cancel_destroy change_password password_update]
-  before_action :check_id, only: %i[change update confirm_destroy change_password password_update]
+  before_action :get_user_id, only: %i[set_admin edit change update confirm_destroy destroy cancel_destroy password_update]
+  before_action :check_id, only: %i[change update confirm_destroy password_update]
+
   def admin_profile
     @users = User.where.not(email: 'admin@admin.ru').select(&:confirmed?)
   end
@@ -92,13 +93,17 @@ class ProfileController < ApplicationController
     @teachers = Teacher.all.sort_by(&:fio)
   end
 
+  def change_password
+  end
+
   def password_update
     user = User.find(@user_id)
     unless user.change_password(get_change_password_parameters)
       @errors = user.errors.map(&:message)
       render turbo_stream: turbo_stream.update('error-messages', partial: 'error_messages')
     else
-      redirect_to '/profile/profile'
+      # save session
+      redirect_to '/profile'
     end
   end
 

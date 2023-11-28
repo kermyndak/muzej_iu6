@@ -21,18 +21,18 @@ RSpec.describe "Requests", type: :request do
   describe "GET add_files" do
     it 'redirected GET for default user' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      get request_add_files_path
+      get add_files_url
       expect(response).to redirect_to(root_path)
     end
 
     it 'success GET for admin' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      get request_add_files_path
+      get add_files_url
       expect(response).to have_http_status(:success)
     end
 
     it 'redirected for non auth' do
-      get request_add_files_path
+      get add_files_url
       expect(response).to redirect_to(new_user_session_path)
     end
   end
@@ -40,18 +40,18 @@ RSpec.describe "Requests", type: :request do
   describe "GET send_files" do
     it 'success GET for default user' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      get request_send_request_path
+      get send_request_url
       expect(response).to have_http_status(:success)
     end
 
     it 'success GET for admin' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      get request_send_request_path
+      get send_request_url
       expect(response).to have_http_status(:success)
     end
 
     it 'redirected for non auth' do
-      get request_send_request_path
+      get send_request_url
       expect(response).to redirect_to(new_user_session_path)
     end
   end
@@ -59,18 +59,18 @@ RSpec.describe "Requests", type: :request do
   describe 'GET admin' do
     it 'redirect for default user' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      get request_admin_path
+      get requests_url
       expect(response).to redirect_to(root_path)
     end
 
     it 'redirect for guest' do
-      get request_admin_path
+      get requests_url
       expect(response).to redirect_to(new_user_session_path)
     end
 
     it 'success for admin' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      get request_admin_path
+      get requests_url
       expect(response).to have_http_status(:success)
     end
   end
@@ -78,18 +78,18 @@ RSpec.describe "Requests", type: :request do
   describe 'GET already_read' do
     it 'redirect for default user' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      get request_already_read_path
+      get already_read_url
       expect(response).to redirect_to(root_path)
     end
 
     it 'redirect for guest' do
-      get request_already_read_path
+      get already_read_url
       expect(response).to redirect_to(new_user_session_path)
     end
 
     it 'success for admin' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      get request_already_read_path
+      get already_read_url
       expect(response).to have_http_status(:success)
     end
   end
@@ -146,19 +146,19 @@ RSpec.describe "Requests", type: :request do
 
   describe 'GET add_files' do
     it 'redirect if guest' do
-      get request_add_files_path
+      get add_files_url
       expect(response).to redirect_to(new_user_session_path)
     end
 
     it 'redirect if default user' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      get request_add_files_path
+      get add_files_url
       expect(response).to redirect_to(root_path)
     end
 
     it 'success if admin' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      get request_add_files_path
+      get add_files_url
       expect(response).to have_http_status(:success)
     end
   end

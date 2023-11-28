@@ -17,70 +17,70 @@ RSpec.describe "Profiles", type: :request do
 
   describe "GET profile/admin_profile" do
     it 'redirect to sign_in' do
-      get profile_admin_profile_url
+      get admin_url
       expect(response).to redirect_to(new_user_session_url)
     end
 
     it 'return http status success' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      get profile_admin_profile_url
+      get admin_url
       expect(response).to have_http_status(:success)
     end
 
     it 'redirect to root_path if default user log in' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      get profile_admin_profile_url
+      get admin_url
       expect(response).to redirect_to(root_path)
     end
   end
 
   describe "GET profile/profile" do
     it 'redirect to sign_in' do
-      get profile_profile_url
+      get profile_url
       expect(response).to redirect_to(new_user_session_url)
     end
 
     it 'return http status success' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      get profile_profile_url
+      get profile_url
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "PUT profile/set_admin" do
+  describe "PATCH profile/set_admin" do
     it 'redirect to sign_in' do
-      put '/profile/set_admin/99'
+      patch '/set_admin/99'
       expect(response).to redirect_to(new_user_session_url)
     end
 
     it 'redirect to root_path if default user log in' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      put '/profile/set_admin/99'
+      patch '/set_admin/99'
       expect(response).to redirect_to(root_path)
     end
 
     it 'success when admin log in' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      put "/profile/set_admin/#{@user.id}", xhr: true
+      patch "/set_admin/#{@user.id}", xhr: true
       expect(response).to have_http_status(:success)
     end
   end
 
   describe "GET profile/edit" do
     it 'redirect to sign_in' do
-      get '/profile/edit/0'
+      get '/users/edit/0'
       expect(response).to redirect_to(new_user_session_url)
     end
 
     it 'return http status success' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      get "/profile/edit/#{@user.id}"
+      get "/users/edit/#{@user.id}"
       expect(response).to have_http_status(:success)
     end
 
     it 'redirect to root_path if default user log in' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      get '/profile/edit/99'
+      get '/users/edit/99'
       expect(response).to redirect_to(root_path)
     end
   end
@@ -110,21 +110,21 @@ RSpec.describe "Profiles", type: :request do
     end
   end
 
-  describe "PUT profile/update" do
+  describe "PATCH profile/update" do
     it 'redirect to sign_in' do
-      put '/profile/update/name/0'
+      patch '/profile/update/name/0'
       expect(response).to redirect_to(new_user_session_url)
     end
 
     it 'check error on update other user' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      put "/profile/update/name/0"
+      patch "/profile/update/name/0"
       expect(response).to redirect_to(root_path)
     end
 
     it 'check not error on update other user from admin' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      put "/profile/update/name/#{@user.id}", xhr: true
+      patch "/profile/update/name/#{@user.id}", xhr: true
       expect(response).to have_http_status(:success)
     end
   end
@@ -169,25 +169,25 @@ RSpec.describe "Profiles", type: :request do
 
   describe "DELETE profile/confirm_destroy" do
     it 'redirect to sign_in' do
-      delete '/profile/confirm_destroy/0'
+      delete '/profile/destroy/0'
       expect(response).to redirect_to(new_user_session_url)
     end
 
     it 'delete user' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      delete "/profile/confirm_destroy/#{@user.id}"
+      delete "/profile/destroy/#{@user.id}"
       expect(response).to have_http_status(:success)
     end
 
     it 'check error on delete other user' do
       post user_session_url, params: {user: {email: "tester@test.ru", password: "password", remember_me: 0}}
-      delete "/profile/confirm_destroy/0"
+      delete "/profile/destroy/0"
       expect(response).to redirect_to(root_path)
     end
 
     it 'check not error on delete other user from admin' do
       post user_session_url, params: {user: {email: "tester@admin.ru", password: "password", remember_me: 0}}
-      delete "/profile/confirm_destroy/#{@user.id}"
+      delete "/profile/destroy/#{@user.id}"
       expect(response).to have_http_status(:success)
     end
   end

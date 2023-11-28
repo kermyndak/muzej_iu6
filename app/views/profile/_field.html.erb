@@ -1,5 +1,5 @@
 <%= turbo_frame_tag 'name' do %>
-    <%= form_with url: "/profile/update/name/#{@user_id}", method: :put do |form| %>
+    <%= form_with url: "/profile/update/name/#{@user_id}", method: :patch do |form| %>
         <div class="name">
             <%= form.text_field :name, placeholder: "Имя" %>
         </div>
@@ -8,7 +8,7 @@
 <% end %>
 
 <%= turbo_frame_tag 'surname' do %>
-    <%= form_with url: "/profile/update/surname/#{@user_id}", method: :put do |form| %>
+    <%= form_with url: "/profile/update/surname/#{@user_id}", method: :patch do |form| %>
         <div class="surname">
             <%= form.text_field :surname, placeholder: "Фамилия" %>
         </div>
@@ -17,7 +17,7 @@
 <% end %>
 
 <%= turbo_frame_tag 'middle_name' do %>
-    <%= form_with url: "/profile/update/middle_name/#{@user_id}", method: :put do |form| %>
+    <%= form_with url: "/profile/update/middle_name/#{@user_id}", method: :patch do |form| %>
         <div class="middle_name">
             <%= form.text_field :middle_name, placeholder: "Отчество" %>
         </div>
@@ -26,7 +26,7 @@
 <% end %>
 
 <%= turbo_frame_tag 'year' do %>
-    <%= form_with url: "/profile/update/year/#{@user_id}", method: :put do |form| %>
+    <%= form_with url: "/profile/update/year/#{@user_id}", method: :patch do |form| %>
         <div class="year">
             <%= form.text_field :year, placeholder: "Год выпуска" %>
         </div>
