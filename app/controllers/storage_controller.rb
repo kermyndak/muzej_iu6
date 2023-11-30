@@ -1,6 +1,6 @@
 class StorageController < ApplicationController
   before_action :check_session
-  before_action :check_admin, only: %i[index change]
+  before_action :check_admin
   before_action :get_type, only: %i[change]
 
   def index

@@ -69,8 +69,6 @@ gem "devise", "~> 4.9"
 
 gem "rspec-rails", "~> 6.0"
 
-gem "google-apis-youtube_v3", "~> 0.32.0"
-
 gem "actionpack-page_caching", "~> 1.2"
 
 gem "bcrypt", "~> 3.1"

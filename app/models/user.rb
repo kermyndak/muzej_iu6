@@ -92,12 +92,12 @@ class User < ApplicationRecord
     end
   end
 
-  def create_teacher_without_confirmation(email, name, surname, middle_name, year)
-    self.email = email
-    self.name = name
-    self.surname = surname
-    self.middle_name = middle_name
-    self.year = year
+  def create_user_without_confirmation(params)
+    self.email = params[:email]
+    self.name = params[:name]
+    self.surname = params[:surname]
+    self.middle_name = params[:middle_name]
+    self.year = params[:year]
     self.confirm
     self.save
   end

@@ -1,26 +1,7 @@
 class ProfileController < ApplicationController
   before_action :check_session
-  before_action :check_admin, only: %i[admin_profile set_admin edit add_teacher create_teacher update_teacher edit_teacher list_teachers]
-  before_action :get_user_id, only: %i[set_admin edit change update confirm_destroy destroy cancel_destroy password_update]
+  before_action :get_user_id, only: %i[change update confirm_destroy destroy cancel_destroy password_update]
   before_action :check_id, only: %i[change update confirm_destroy password_update]
-
-  def admin_profile
-    @users = User.where.not(email: 'admin@admin.ru').select(&:confirmed?)
-  end
-
-  def set_admin
-    @user = User.find(@user_id)
-    if @user.role == 'user'
-      @user.update_column(:role, 'admin')
-    else
-      @user.update_column(:role, 'user')
-    end
-    render partial: 'admin'
-  end
-
-  def edit
-    @user = User.find(@user_id)
-  end
 
   def change
     render partial: 'field'
@@ -66,33 +47,6 @@ class ProfileController < ApplicationController
   def profile
   end
 
-  def add_teacher
-  end
-
-  def create_teacher
-    teacher = Teacher.new(teacher_params)
-    teacher.save!
-    render turbo_stream: turbo_stream.replace('teacher_send_form', partial: 'teacher_send_form')
-  end
-
-  def edit_teacher
-    @teacher = Teacher.find(params[:id])
-  end
-
-  def update_teacher
-    teacher = Teacher.find(params[:id])
-    teacher.image.delete
-    teacher.delete
-    teacher = Teacher.new(teacher_params)
-    teacher.id = params[:id]
-    teacher.save
-    redirect_to '/profile/list_teachers'
-  end
-
-  def list_teachers
-    @teachers = Teacher.all.sort_by(&:fio)
-  end
-
   def change_password
   end
 
@@ -108,24 +62,10 @@ class ProfileController < ApplicationController
   end
 
   private
-  def check_admin
-    if current_user.role != 'admin'
-      redirect_to root_path
-    end
-  end
-  
   def check_id
     if current_user.role != 'admin' && current_user.id != @user_id
       redirect_to root_path
     end
-  end
-
-  def teacher_params
-    params.permit(:fio, :job_title, :additional_information, :image)
-  end
-
-  def get_edit_params
-    params.permit(:name, :surname, :middle_name, :year)
   end
 
   def get_update_params

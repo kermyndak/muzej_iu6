@@ -1,0 +1,28 @@
+<h1>Add users</h1>
+<div id="users"></div>
+
+<%= form_with url: '/admin/create_users', method: :post do |f| %>
+    <div class="field">
+        <%= f.email_field :email, placeholder: "Почта", autofocus: true, autocomplete: "email" %>
+    </div>
+
+    <div class="field">
+        <%= f.text_field :name, placeholder: "Имя", autocomplete: "name" %>
+    </div>
+
+    <div class="field">
+        <%= f.text_field :surname, placeholder: "Фамилия", autocomplete: "surname" %>
+    </div>
+
+    <div class="field">
+        <%= f.text_field :middle_name, placeholder: "Отчество", autocomplete: "middle_name" %>
+    </div>
+
+    <div class="field">
+        <%= f.text_field :year, placeholder: "Год выпуска", autocomplete: "year" %>
+    </div>
+
+    <div class="button">
+        <%= f.submit "Зарегистрировать", class: "button" %>
+    </div>
+<% end %>
