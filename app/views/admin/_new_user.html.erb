@@ -5,4 +5,5 @@
     <p>Middle_name: <%= @middle_name %></p>
 <% end %>
 <p>Year: <%= @user.year %></p>
-<p>Password: <%= @password %></p>
+<p>Password: <input type="text" id="password<%= @user.id %>" value="<%= @password %>" readonly> <button onclick="copy_text(<%= @user.id %>)">Copy text</button></p>
+<hr/>

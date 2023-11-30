@@ -85,10 +85,10 @@ class User < ApplicationRecord
 
   def generate_password(set=false)
     if set
-      self.password = (1..8).map { |_| [('a'..'z').to_a[rand(28)], ('0'..'9').to_a[rand(10)], ['!', '~', '@', '#', '$', '%', '^', '&', '*'][rand(9)]][rand(3)] }.join
+      self.password = (1..12).map { |_| [('a'..'z').to_a[rand(28)], ('0'..'9').to_a[rand(10)], ['!', '~', '@', '#', '$', '%', '^', '&', '*'][rand(9)]][rand(3)] }.join
       self.password_confirmation = self.password
     else
-      (1..8).map { |_| [('a'..'z').to_a[rand(28)], ('0'..'9').to_a[rand(10)], ['!', '~', '@', '#', '$', '%', '^', '&', '*'][rand(9)]][rand(3)] }.join
+      (1..12).map { |_| [('a'..'z').to_a[rand(28)], ('0'..'9').to_a[rand(10)], ['!', '~', '@', '#', '$', '%', '^', '&', '*'][rand(9)]][rand(3)] }.join
     end
   end
 
