@@ -9,9 +9,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    begin
+      super
+    rescue Net::SMTPFatalError
+      resource.errors.add(:email, "Отправка подтверждения на эту почту невозможна")
+      render turbo_stream: turbo_stream.update('errors', partial: 'devise/shared/error_messages', resource: resource)
+    else
+      
+    end
+  end
 
   # GET /resource/edit
   # def edit
