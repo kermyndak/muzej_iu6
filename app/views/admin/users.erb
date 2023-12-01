@@ -5,7 +5,7 @@
         <h3 class="card-title">Email: <%= user.email %></h3>
         <p>Имя: <%= user.name %></p>
         <p>Фамилия: <%= user.surname %></p>
-        <% unless user.middle_name.empty? %>
+        <% if user.middle_name %>
           <p>Отчество: <%= user.middle_name %></p>
         <% end %>
         <p>Год выпуска: <%= user.year %></p>

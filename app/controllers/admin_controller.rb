@@ -55,7 +55,7 @@ class AdminController < ApplicationController
     @user = User.new
     @password = @user.generate_password(true)
     @user.create_user_without_confirmation(get_user_params)
-    SendInstructionsMailer.with(user: @user, password: @password).send_mail_for_sign_in.deliver_later
+    MailerJob.perform_later(current_user, @user, @password)
     render turbo_stream: turbo_stream.append('users', partial: 'new_user')
   end
 
