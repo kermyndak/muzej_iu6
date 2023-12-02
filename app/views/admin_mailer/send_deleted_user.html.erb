@@ -1,0 +1,10 @@
+<p>Данные пользователи были удалены потому, что не подтвердили регистрацию в течении трёх дней </p>
+<% @users.each do |user| %>
+    <p>Email: <%= user.email %><p>
+    <p>Name: <%= user.name %><p>
+    <p>Surname: <%= user.surname %><p>
+    <% if user.middle_name %>
+      <p>Middle_name: <%= user.middle_name %><p>
+    <% end %>
+    <hr>
+<% end %>

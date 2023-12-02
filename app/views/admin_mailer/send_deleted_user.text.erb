@@ -1,0 +1,10 @@
+Данные пользователи были удалены потому, что не подтвердили регистрацию в течении трёх дней
+<% @users.each do |user| %>
+    Email: <%= user.email %>
+    Name: <%= user.name %>
+    Surname: <%= user.surname %>
+    <% if user.middle_name %>
+      Middle_name: <%= user.middle_name %>
+    <% end %>
+    ---------------------------------------------
+<% end %>
