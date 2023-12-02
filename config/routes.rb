@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  require 'sidekiq/web'
+  mount Sidekiq::Web => '/sidekiq'
+
   root 'homepage#home'
   get '/museum', to: 'homepage#museum', as: 'museum'
   get '/materials', to: 'homepage#materials', as: 'materials'
@@ -37,6 +40,7 @@ Rails.application.routes.draw do
   patch '/set_admin/:id', to: 'admin#set_admin'
   get '/admin/add_users', as: 'add_users'
   post '/admin/create_users', as: 'create_users'
+  post '/admin/clean_users_without_confirmation'
 
   get '/storage', to: 'storage#index'
   post '/storage/:type', to: 'storage#change'

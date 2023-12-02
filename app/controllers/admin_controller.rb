@@ -59,6 +59,11 @@ class AdminController < ApplicationController
     render turbo_stream: turbo_stream.append('users', partial: 'new_user')
   end
 
+  def clean_users_without_confirmation
+    CheckConfirmationJob.perform_later(current_user)
+    render turbo_stream: turbo_stream.append('clean-block', "Запрос отправлен")
+  end
+
   private
   def check_admin
     if current_user.role != 'admin'

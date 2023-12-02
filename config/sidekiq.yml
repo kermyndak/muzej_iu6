@@ -1,5 +1,12 @@
+:scheduler:
+  :schedule:
+    delete_users_without_confirmation:
+      cron: "0 0 * * 7"
+      class: 'DeleteUsersWithoutConfirmationScheduler'
+      queue: default
+
 development:
-  :concurrency: 3
+  :concurrency: 7
 production:
   :concurrency: <%= ENV['SIDEKIQ_CONCURRENCY'] || 15 %>
 :queues:

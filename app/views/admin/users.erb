@@ -29,4 +29,9 @@
     <br>
 <% end %>
 
+<div id="clean-block">
+  Чистка подразумевает удаление пользователей не подтвердивших почту в течении трёх дней
+  <%= button_to 'Чистка пользователей', "/admin/clean_users_without_confirmation" %>
+</div>
+
 <%= link_to 'home', root_path %>
