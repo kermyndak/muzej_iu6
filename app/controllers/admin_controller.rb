@@ -54,9 +54,13 @@ class AdminController < ApplicationController
   def create_users
     @user = User.new
     @password = @user.generate_password(true)
-    @user.create_user_without_confirmation(get_user_params)
-    MailerJob.perform_later(current_user, @user, @password)
-    render turbo_stream: turbo_stream.append('users', partial: 'new_user')
+    if @user.create_user_without_confirmation(get_user_params)
+      MailerJob.perform_later(current_user, @user, @password)
+      render partial: 'created_user'
+    else
+      @errors = @user.errors.map(&:message)
+      render turbo_stream: turbo_stream.update('errors', partial: 'error_messages')
+    end
   end
 
   def clean_users_without_confirmation

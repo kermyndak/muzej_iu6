@@ -93,12 +93,22 @@ class User < ApplicationRecord
   end
 
   def create_user_without_confirmation(params)
-    self.email = params[:email]
-    self.name = params[:name]
-    self.surname = params[:surname]
-    self.middle_name = params[:middle_name]
-    self.year = params[:year]
-    self.confirm
-    self.save
+    begin
+      self.email = params[:email]
+      self.name = params[:name]
+      self.surname = params[:surname]
+      self.middle_name = params[:middle_name]
+      self.year = params[:year]
+      self.confirm
+    rescue ActiveRecord::RecordNotUnique
+      self.errors.add(:email, "Эта почта уже используется")
+      return false
+    else
+      unless self.valid?
+        return false
+      end
+      self.save
+      return true
+    end
   end
 end

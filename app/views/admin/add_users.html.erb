@@ -1,6 +1,8 @@
 <h1>Add users</h1>
 <div id="users"></div>
 
+<div id="errors"></div>
+
 <%= form_with url: '/admin/create_users', method: :post do |f| %>
     <div class="field">
         <%= f.email_field :email, placeholder: "Почта", autofocus: true, autocomplete: "email" %>
