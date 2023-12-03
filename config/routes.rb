@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  require 'sidekiq/web'
-  mount Sidekiq::Web => '/sidekiq'
-
   root 'homepage#home'
   get '/museum', to: 'homepage#museum', as: 'museum'
   get '/materials', to: 'homepage#materials', as: 'materials'
@@ -44,7 +41,10 @@ Rails.application.routes.draw do
 
   get '/storage', to: 'storage#index'
   post '/storage/:type', to: 'storage#change'
-  devise_for :users, path_name: { sign_up: 'registrations/new' }, controllers: { registrations: 'users/registrations' }
+
+  get '/settings', to: "profile#settings"
+
+  devise_for :users, path_name: { sign_up: 'registrations/new', sign_in: 'sessions/create', sign_out: 'sessions/destroy' }, controllers: { registrations: 'users/registrations', sessions: 'users/sessions' }
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")

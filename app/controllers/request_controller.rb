@@ -1,4 +1,5 @@
 class RequestController < ApplicationController
+  before_action :set_cookie
   before_action :check_session
   before_action :check_admin, only: %i[admin read already_read add_files]
   before_action :get_request_id, only: %i[read change_request change]

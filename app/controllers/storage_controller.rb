@@ -1,4 +1,5 @@
 class StorageController < ApplicationController
+  before_action :set_cookie
   before_action :check_session
   before_action :check_admin
   before_action :get_type, only: %i[change]

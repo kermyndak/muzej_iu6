@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+  before_action :set_cookie
   before_action :check_session
   before_action :check_admin
   before_action :get_user_id, only: %i[set_admin edit]

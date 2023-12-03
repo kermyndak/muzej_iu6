@@ -1,4 +1,5 @@
 class ProfileController < ApplicationController
+  before_action :set_cookie
   before_action :check_session
   before_action :get_user_id, only: %i[change update confirm_destroy destroy cancel_destroy password_update]
   before_action :check_id, only: %i[change update confirm_destroy password_update]
@@ -59,6 +60,10 @@ class ProfileController < ApplicationController
       # save session
       redirect_to '/profile'
     end
+  end
+
+  def settings
+    render 'setting_colors'
   end
 
   private

@@ -7,6 +7,13 @@ class ApplicationController < ActionController::Base
       request.referrer
     end
 
+    # For nginx cache
+    def set_cookie
+      if cookies[:auth]
+        cookies[:auth] = { :value => "1", :expires => Time.now + 7200 }
+      end
+    end
+
     def check_session
       unless user_signed_in?
         redirect_to new_user_session_url

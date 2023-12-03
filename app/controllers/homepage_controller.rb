@@ -1,4 +1,5 @@
 class HomepageController < ApplicationController
+  before_action :set_cookie
   before_action :check_session, only: %i[profile_list exit_profile_list]
   caches_page :home, :museum, :history, :teachers, :materials
 
