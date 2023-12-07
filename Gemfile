@@ -70,8 +70,6 @@ gem "devise", "~> 4.9"
 
 gem "rspec-rails", "~> 6.0"
 
-gem "actionpack-page_caching", "~> 1.2"
-
 gem "bcrypt", "~> 3.1"
 
 gem "sidekiq", "<7.0"

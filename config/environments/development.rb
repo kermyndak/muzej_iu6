@@ -78,8 +78,6 @@ Rails.application.configure do
     enable_starttls_auto: true
   }
 
-  config.action_controller.page_cache_directory = Rails.root.join("public", "cached_pages")
-
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true
 
