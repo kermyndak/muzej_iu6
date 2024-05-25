@@ -2,7 +2,7 @@ body {
     margin: 0;
     font-family: 'IBM Plex Sans', sans-serif;
     color: #000;
-    --color-blue: #18305E;
+    --color-blue: #002C5B;
     background: #fdfdfe;
     --shadowHeaderColor: rgba(125, 143, 179, 0.2);
     --grey-text: #6D6D6D;
@@ -56,7 +56,7 @@ body {
 .link {
     text-decoration: none;
     letter-spacing: 0.4px;
-    background: linear-gradient(to right, #386FDB, #386FDB 50%, #000 50%);
+    background: linear-gradient(to right, #006CDC, #006CDC 50%, #000 50%);
     background-clip: text;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -223,7 +223,7 @@ border: 1px solid #386FDB;
     box-shadow: 0px 0px 70px 0px rgba(0, 0, 0, 0.10);
 }
 .blue {
-    background-color: #18305E;
+    background-color: #002C5B;
     color: #fff;
 }
 
@@ -296,7 +296,7 @@ footer {
 
     color: var(--light-grey, --light-grey);
 
-    background: #2D5AB1;
+    background: #004E9F;
 
     display: flex;
 
