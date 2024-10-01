@@ -46,7 +46,7 @@ class HomepageController < ApplicationController
   end
 
   def exit_profile_list
-    render turbo_stream: turbo_stream.update('profile', '<a href="/homepage/profile_list">Профиль</a>')
+    render turbo_stream: turbo_stream.update('profile', '<a href="/homepage/profile_list" class="button-white">Профиль</a>')
   end
 
   private
